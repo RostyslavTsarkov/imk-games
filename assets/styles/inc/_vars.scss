@@ -1,0 +1,38 @@
+// Project variables
+
+$white: #ffffff; // secondary color
+$pale-yellow: #eae7be; //primary color
+$khaki: #ddd999; // mobile top tabs active
+$dark-vanilla: #c2c09e; // tabs
+$gold: #ddc557; //tables
+$dark-gray: #aaaaaa; //titles of sidebar
+$granite-gray: #666666; //meta data for post
+$pine-tree: #2b2b27; //footer bg
+$raisin-black: #271c28; //alt text color
+$eerie-black: #1b1b1b; //tables
+$raisin-black: #212121; //body bg
+
+$primary-color: $white;
+$sub-color: $pale-yellow;
+
+$text-color: $white;
+$text-alt-color: $raisin-black;
+
+$font: 'Bitter', Helvetica, Arial, sans-serif;
+$sub-font: 'Roboto', Arial, serif;
+$fa: 'Font Awesome 6 Free';
+//$fab: 'Font Awesome 6 Brands';
+
+// Font Awesome Vars
+//$fa-font-display: swap;
+
+// Project mixins
+
+// Custom fonts
+:root {
+  --content-size: 1920px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
