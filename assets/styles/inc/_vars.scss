@@ -1,19 +1,22 @@
 // Project variables
 
 $white: #ffffff; // secondary color
-$pale-yellow: #eae7be; //primary color
-$khaki: #ddd999; // mobile top tabs active
-$dark-vanilla: #c2c09e; // tabs
-$gold: #ddc557; //tables
-$dark-gray: #aaaaaa; //titles of sidebar
-$granite-gray: #666666; //meta data for post
-$pine-tree: #2b2b27; //footer bg
-$raisin-black: #271c28; //alt text color
-$eerie-black: #1b1b1b; //tables
-$raisin-black: #212121; //body bg
+$pale-yellow: #eae7be; // primary color
+$khaki: #ddd999; // mobile top tabs (active)
+$dark-vanilla: #c2c09e; // tabs (inactive)
+$gold: #ddc557; // tables
+$dark-gray: #aaaaaa; // titles of sidebar
+$granite-gray: #666666; // meta data for post
+$pine-tree: #2b2b27; // footer bg
+$raisin-black: #271c28; // alt text color
+$eerie-black: #1b1b1b; // tables
+$raisin-black: #212121; // body bg
 
 $primary-color: $white;
 $sub-color: $pale-yellow;
+
+$body-bg: $raisin-black;
+$footer-bg: $pine-tree;
 
 $text-color: $white;
 $text-alt-color: $raisin-black;
