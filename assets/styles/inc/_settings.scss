@@ -84,7 +84,7 @@ $dark-gray: $dark-gray;
 $black: #000;
 $white: #fff;
 
-$body-background: $raisin-black;
+$body-background: $body-bg;
 $body-font-color: $white;
 $body-font-family: $font;
 $body-antialiased: true;
@@ -884,7 +884,14 @@ $grid-margin-gutters: (
   small: 20px,
   medium: 30px,
 );
+$grid-container-padding-gutters: (
+  small: 20px,
+  medium: 60px,
+  large: 120px,
+  xlarge: 180px,
+  xxlarge: 240px,
+);
 $grid-padding-gutters: $grid-margin-gutters;
-$grid-container-padding: $grid-padding-gutters;
+$grid-container-padding: $grid-container-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
