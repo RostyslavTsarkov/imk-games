@@ -52,6 +52,7 @@ array_map(function ($file) {
     'class-lazyload',
     'theme-customizations',
     'home-slider',
+    'testimonial-slider',
     'svg-support',
     'gravity-form-customizations',
     'custom-fields-search',
