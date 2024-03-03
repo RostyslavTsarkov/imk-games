@@ -190,6 +190,26 @@ $header-styles: (
       'font-size': 16,
     ),
   ),
+  large: (
+    'h1': (
+      'font-size': 98,
+    ),
+    'h2': (
+      'font-size': 80,
+    ),
+    'h3': (
+      'font-size': 60,
+    ),
+    'h4': (
+      'font-size': 40,
+    ),
+    'h5': (
+      'font-size': 32,
+    ),
+    'h6': (
+      'font-size': 28,
+    ),
+  ),
 );
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
@@ -815,17 +835,17 @@ $table-stack-breakpoint: medium;
 // 51. Tabs
 // --------
 
-$tab-margin: 10px;
-$tab-background: $sub-color;
+$tab-margin: 0;
+$tab-background: $tab-item-bg;
 $tab-color: $text-alt-color;
 $tab-background-active: $sub-color;
-$tab-active-color: $primary-color;
-$tab-item-font-size: rem-calc(16);
+$tab-active-color: $text-alt-color;
+$tab-item-font-size: rem-calc(28);
 $tab-item-background-hover: $sub-color;
 $tab-item-padding: 1.25rem 1.5rem;
-$tab-content-background: $white;
+$tab-content-background: $sub-color;
 $tab-content-border: none;
-$tab-content-color: $body-font-color;
+$tab-content-color: $text-alt-color;
 $tab-content-padding: 3rem;
 
 // 52. Thumbnail
