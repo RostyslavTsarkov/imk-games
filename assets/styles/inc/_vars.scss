@@ -17,9 +17,16 @@ $sub-color: $pale-yellow;
 
 $body-bg: $raisin-black;
 $footer-bg: $pine-tree;
+$tab-item-bg: $dark-vanilla;
 
 $text-color: $white;
 $text-alt-color: $raisin-black;
+
+$paragraph-font-size: (
+  small: 16px,
+  medium: 22px,
+  large: 28px,
+);
 
 $font: 'Bitter', Helvetica, Arial, sans-serif;
 $sub-font: 'Roboto', Arial, serif;
