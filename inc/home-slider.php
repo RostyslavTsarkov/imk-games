@@ -262,7 +262,7 @@ add_shortcode('slider', function () {
                         <div class="grid-container home-slide__caption">
                             <div class="grid-x grid-margin-x">
                                 <div class="cell">
-                                    <h3><?php the_title(); ?></h3>
+                                    <h1><?php the_title(); ?></h1>
                                     <?php the_content(); ?>
                                 </div>
                             </div>
