@@ -226,17 +226,15 @@ get_header(); ?>
 <!-- END of order table section -->
 
 <!-- BEGIN of projects table section -->
-<?php if (shortcode_exists('table')) : ?>
 <section class="projects-table-section">
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell">
-                <?php do_shortcode('[table id=2 responsive="collapse" /]') ?>
+                <?php echo do_shortcode('[table id=2 responsive="collapse" /]') ?>
             </div>
         </div>
     </div>
 </section>
-<?php endif; ?>
 <!-- END of projects table section -->
 
 <!-- BEGIN of blog section -->
@@ -271,7 +269,14 @@ get_header(); ?>
 <section class="contacts-section" id="contacts">
     <div class="grid-container">
         <div class="grid-x">
-
+            <?php if ($title = get_field('home_contact_title')) : ?>
+                <div class="cell">
+                    <h3><?php echo $title; ?></h3>
+                </div>
+            <?php endif; ?>
+                <div class="cell">
+                    <?php gravity_form('1', false, false, false, '', true, 1); ?>
+                </div>
         </div>
     </div>
 </section>
