@@ -94,7 +94,7 @@ $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
-$global-menu-padding: 0.7rem 1rem;
+$global-menu-padding: 0.7rem 0 0.7rem 1.875rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
@@ -207,7 +207,7 @@ $header-styles: (
       'font-size': 32,
     ),
     'h6': (
-      'font-size': 28,
+      'font-size': 23,
     ),
   ),
 );
@@ -282,18 +282,18 @@ $input-error-font-weight: $global-weight-bold;
 // 7. Accordion
 // ------------
 
-$accordion-background: $white;
+$accordion-background: transparent;
 $accordion-plusminus: true;
-$accordion-plus-content: '\002B';
-$accordion-minus-content: '\2013';
-$accordion-title-font-size: rem-calc(12);
+$accordion-plus-content: '';
+$accordion-minus-content: '';
+$accordion-title-font-size: rem-calc(40);
 $accordion-item-color: $primary-color;
-$accordion-item-background-hover: $light-gray;
-$accordion-item-padding: 1.25rem 1rem;
-$accordion-content-background: $white;
-$accordion-content-border: 1px solid $light-gray;
+$accordion-item-background-hover: $text-alt-color;
+$accordion-item-padding: 1.75rem 2rem;
+$accordion-content-background: transparent;
+$accordion-content-border: 5px solid $sub-color;
 $accordion-content-color: $body-font-color;
-$accordion-content-padding: 1rem;
+$accordion-content-padding: 1.75rem 2rem;
 
 // 8. Accordion Menu
 // -----------------
@@ -341,7 +341,7 @@ $breadcrumbs-item-separator-color: $medium-gray;
 // ----------
 
 $button-font-family: inherit;
-$button-font-weight: null;
+$button-font-weight: 800;
 $button-padding: 0.85em 1em;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
@@ -356,7 +356,7 @@ $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
   default: 0.9rem,
-  large: 1.25rem,
+  large: 2rem,
 );
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
@@ -479,7 +479,7 @@ $flexbox-responsive-breakpoints: true;
 // 20. Forms
 // ---------
 
-$fieldset-border: 1px solid $medium-gray;
+$fieldset-border: 3px solid $tab-item-bg;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
@@ -489,33 +489,33 @@ $helptext-font-size: rem-calc(13);
 $helptext-font-style: italic;
 $input-prefix-color: $black;
 $input-prefix-background: $light-gray;
-$input-prefix-border: 1px solid $medium-gray;
+$input-prefix-border: 3px solid $tab-item-bg;
 $input-prefix-padding: 1rem;
 $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
 $form-label-line-height: 1.8;
-$select-background: $white;
+$select-background: transparent;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
-$input-color: $black;
-$input-placeholder-color: $medium-gray;
+$input-color: $primary-color;
+$input-placeholder-color: $granite-gray;
 $input-font-family: inherit;
-$input-font-size: rem-calc(16);
+$input-font-size: rem-calc(22);
 $input-font-weight: $global-weight-normal;
 $input-line-height: $global-lineheight;
-$input-background: $white;
-$input-background-focus: $white;
+$input-background: transparent;
+$input-background-focus: $granite-gray;
 $input-background-disabled: $light-gray;
-$input-border: 1px solid $medium-gray;
-$input-border-focus: 1px solid $dark-gray;
-$input-padding: $form-spacing / 2;
+$input-border: 3px solid $tab-item-bg;
+$input-border-focus: 3px solid $tab-item-bg;
+$input-padding: rem-calc(8 25);
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
-$input-radius: $global-radius;
+$input-radius: 15px;
 $form-button-radius: $global-radius;
 
 // 21. Label
@@ -543,9 +543,9 @@ $menu-margin: 0;
 $menu-nested-margin: $global-menu-nested-margin;
 $menu-items-padding: $global-menu-padding;
 $menu-simple-margin: 1rem;
-$menu-item-color-active: $white;
+$menu-item-color-active: $sub-color;
 $menu-item-color-alt-active: $black;
-$menu-item-background-active: get-color(primary);
+$menu-item-background-active: transparent;
 $menu-icon-spacing: 0.25rem;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
@@ -602,15 +602,15 @@ $orbit-control-zindex: 10;
 // 27. Pagination
 // --------------
 
-$pagination-font-size: rem-calc(14);
+$pagination-font-size: rem-calc(28);
 $pagination-margin-bottom: $global-margin;
-$pagination-item-color: $black;
+$pagination-item-color: $primary-color;
 $pagination-item-padding: rem-calc(3 10);
 $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
-$pagination-item-background-hover: $light-gray;
-$pagination-item-background-current: $primary-color;
-$pagination-item-color-current: $white;
+$pagination-item-background-hover: transparent;
+$pagination-item-background-current: transparent;
+$pagination-item-color-current: $sub-color;
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
@@ -836,7 +836,7 @@ $table-stack-breakpoint: medium;
 // --------
 
 $tab-margin: 0;
-$tab-background: $tab-item-bg;
+$tab-background: none;
 $tab-color: $text-alt-color;
 $tab-background-active: $sub-color;
 $tab-active-color: $text-alt-color;
@@ -846,7 +846,7 @@ $tab-item-padding: 1.25rem 1.5rem;
 $tab-content-background: $sub-color;
 $tab-content-border: none;
 $tab-content-color: $text-alt-color;
-$tab-content-padding: 3rem;
+$tab-content-padding: 0;
 
 // 52. Thumbnail
 // -------------
@@ -907,9 +907,9 @@ $grid-margin-gutters: (
 $grid-container-padding-gutters: (
   small: 20px,
   medium: 60px,
-  large: 120px,
-  xlarge: 180px,
-  xxlarge: 240px,
+  large: 240px,
+  xlarge: 360px,
+  xxlarge: 480px,
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-container-padding-gutters;
