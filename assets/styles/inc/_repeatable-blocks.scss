@@ -5,6 +5,8 @@
 .stay-tuned {
   @include list-unstyled;
 
+  display: flex;
+  justify-content: space-between;
   margin-right: -5px;
   margin-left: -5px;
   font-size: 0;
@@ -20,8 +22,13 @@
   display: block;
 
   .fab {
+    color: $granite-gray;
     display: block;
-    font-size: 16px;
+    font-size: 45px;
+
+    &:hover {
+      color: $sub-color;
+    }
   }
 }
 
@@ -80,4 +87,37 @@
 .sbs-block__img {
   width: 100%;
   height: 100%;
+}
+
+/* ---------------------------------------
+	Home post block
+--------------------------------------- */
+
+.post-block {
+  max-width: 525px;
+
+  &.preview {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  .preview__meta {
+    margin-top: 0;
+    color: $primary-color;
+    font-size: rem-calc(28);
+    font-weight: 700;
+  }
+
+  .preview__thumb {
+    max-height: 345px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .preview__excerpt {
+    margin-top: 15px;
+    color: $dark-gray;
+    line-height: 2.25rem;
+  }
 }
