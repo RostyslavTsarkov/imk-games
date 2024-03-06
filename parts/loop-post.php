@@ -9,19 +9,23 @@
             </div>
         <?php endif; ?>
         <div class="cell auto">
-            <h3 class="preview__title">
+            <h4 class="preview__title">
                 <a href="<?php the_permalink(); ?>"
                    title="<?php echo esc_attr(sprintf(__('Permalink to %s', 'fxy'), the_title_attribute('echo=0'))); ?>"
                    rel="bookmark"><?php echo get_the_title() ?: __('No title', 'fxy'); ?>
                 </a>
-            </h3>
+            </h4>
             <?php if (is_sticky()) : ?>
                 <span class="secondary label preview__sticky"><?php _e('Sticky', 'fxy'); ?></span>
             <?php endif; ?>
             <div class="preview__excerpt">
-                <?php the_excerpt(); // Use wp_trim_words() instead if you need specific number of words?>
+                <p class="preview__excerpt">
+                    <?php echo wp_trim_words(get_the_excerpt(), 20);?>
+                </p>
             </div>
-            <p class="preview__meta"><?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time(get_option('date_format'))); ?></p>
+            <p class="preview__meta">
+                <?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time('F j, Y')); ?>
+            </p>
         </div>
     </div>
 </article>
