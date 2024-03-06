@@ -159,4 +159,16 @@ add_image_size('large_high', 1024, 0, false);
 // Disable gutenberg
 add_filter('use_block_editor_for_post_type', '__return_false');
 
+function register_menus()
+{
+    register_nav_menus(
+        array(
+            'footer-menu-2' => __('Footer Menu 2'),
+            'footer-menu-3' => __('Footer Menu 3'),
+        )
+    );
+}
+
+add_action('init', 'register_menus');
+
 /*****************************************************************************/
