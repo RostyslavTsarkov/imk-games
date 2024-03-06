@@ -227,3 +227,47 @@ $(window).on('resize', function () {
 $(window).on('scroll', function () {
   // jQuery code goes here
 });
+
+/**
+ * Scripts for toggling header search form
+ */
+function closeByClickOutside(element, button, callback) {
+  $(document).click(function (event) {
+    if (!$(event.target).closest(`${element},${button}`).length) {
+      $(button).removeClass('active');
+      $(element).removeClass('active');
+    }
+  });
+
+  $(document).keyup(function (e) {
+    if (e.key === 'Escape') {
+      $(button).removeClass('active');
+      $(element).removeClass('active');
+    }
+  });
+
+  if (callback instanceof Function) {
+    callback();
+  }
+}
+
+closeByClickOutside(
+  '[data-toggle-block="search"]',
+  '[data-toggle-click="search"]'
+);
+
+$('[data-toggle-click]').each(function () {
+  $(this).on('click', function (e) {
+    $(this).toggleClass('active');
+    e.preventDefault();
+    let dropdown = $(this).data('toggle-click');
+    $('[data-toggle-block].active')
+      .not($(`[data-toggle=${dropdown}]`))
+      .removeClass('active');
+    $('[data-toggle-click].active')
+      .not($(`[data-toggle-click=${dropdown}]`))
+      .removeClass('active');
+    $(`[data-toggle-block=${dropdown}]`).toggleClass('active');
+    $(`[data-toggle-active=${dropdown}]`).toggleClass('active');
+  });
+});
