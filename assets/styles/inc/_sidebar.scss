@@ -2,6 +2,38 @@
   @include breakpoint(small down) {
     margin-top: 50px;
   }
+
+  h6 {
+    margin-top: 80px;
+  }
+
+  article {
+    display: inline-block;
+  }
+
+  ul,
+  ol {
+    margin: 0px;
+    list-style-type: none;
+
+    li {
+      font-size: rem-calc(28);
+
+      a {
+        color: $sub-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  ul > li:before,
+  ol > li > article > footer:before {
+    content: '-';
+    margin-right: 10px;
+  }
 }
 
 .widget {
@@ -9,5 +41,29 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &.widget_search .wp-block-search {
+    position: relative;
+
+    .wp-block-search__input {
+      height: 80px;
+      padding-right: 60px;
+    }
+
+    .wp-block-search__button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      padding: 10px 40px;
+      border-radius: 0 15px 15px 0 !important;
+
+      &:before {
+        @extend %search-glass;
+        content: '';
+      }
+    }
   }
 }
