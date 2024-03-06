@@ -2,9 +2,9 @@
 
 // Override slick variables (to use default slick styles just remove variables below)
 $slick-font-family: $fa;
-$slick-prev-character: '\f104';
-$slick-next-character: '\f105';
-$slick-dot-character: '\f111';
+$slick-prev-character: '';
+$slick-next-character: '';
+$slick-dot-character: '';
 $slick-arrow-color: $white;
 $slick-dot-color: $primary-color;
 $slick-dot-color-active: $primary-color;
@@ -23,6 +23,7 @@ $slick-arrow-size: 2rem;
   &::before {
     font-weight: 900;
     font-size: $slick-arrow-size;
+    opacity: 1;
   }
 }
 .slick-prev {
