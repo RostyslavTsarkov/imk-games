@@ -151,11 +151,12 @@ ul.pagination {
     a {
       display: block;
       padding: 0 7px;
+      font-weight: 600;
 
       &.current {
         display: block;
-        background: $primary-color;
-        color: $white;
+        background: $pagination-item-background-current;
+        color: $pagination-item-color-current;
       }
     }
   }
