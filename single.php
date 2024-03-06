@@ -5,40 +5,54 @@
  * Loop container for single post content
  */
 get_header(); ?>
-<main class="main-content">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-            <!-- BEGIN of post content -->
-            <div class="large-8 medium-8 small-12 cell">
-                <?php if (have_posts()) : ?>
-                    <?php while (have_posts()) :
-                        the_post(); ?>
+
+<?php if (have_posts()) : ?>
+    <?php while (have_posts()) :
+        the_post(); ?>
+        <div class="header__img">
+            <?php if ($img = get_field('post_header_image')) : ?>
+                <?php echo wp_get_attachment_image($img, false, false, array('class' => 'header__featured-img stretched-img')); ?>
+            <?php endif; ?>
+            <div class="img-mask-black-50"></div>
+        </div>
+        <div class="header__title">
+            <div class="grid-container">
+                <div class="grid-x align-bottom">
+                    <h2 class="page-title entry__title"><?php the_title(); ?></h2>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <!-- BEGIN of post content -->
+                    <div class="large-8 medium-8 small-12 cell">
                         <article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
-                            <h1 class="page-title entry__title"><?php the_title(); ?></h1>
                             <?php if (has_post_thumbnail()) : ?>
                                 <div title="<?php the_title_attribute(); ?>" class="entry__thumb">
                                     <?php the_post_thumbnail('large'); ?>
                                 </div>
                             <?php endif; ?>
-                            <p class="entry__meta"><?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time(get_option('date_format'))); ?></p>
+                            <p class="entry__meta"><?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time('F j, Y')); ?></p>
                             <div class="entry__content clearfix">
                                 <?php the_content('', true); ?>
                             </div>
                             <h6 class="entry__cat"><?php _e('Posted Under: ', 'fxy'); ?><?php the_category(', '); ?></h6>
-                            <?php comments_template(); ?>
                         </article>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-            </div>
-            <!-- END of post content -->
+                    </div>
+                    <!-- END of post content -->
 
-            <!-- BEGIN of sidebar -->
-            <div class="large-4 medium-4 small-12 cell sidebar">
-                <?php get_sidebar('right'); ?>
+                    <!-- BEGIN of sidebar -->
+                    <div class="large-4 medium-4 small-12 cell sidebar">
+                        <?php get_sidebar('right'); ?>
+                    </div>
+                    <!-- END of sidebar -->
+                </div>
             </div>
-            <!-- END of sidebar -->
-        </div>
-    </div>
-</main>
+        </main>
+
+    <?php endwhile; ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
