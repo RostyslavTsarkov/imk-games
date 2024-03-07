@@ -271,3 +271,32 @@ $('[data-toggle-click]').each(function () {
     $(`[data-toggle-active=${dropdown}]`).toggleClass('active');
   });
 });
+
+/**
+ * Scripts for highlighting menu item by its anchor
+ */
+$(window).scroll(function () {
+  var scrollTop = $(this).scrollTop() + $(window).height() / 2;
+
+  $('section').each(function () {
+    var topDistance = $(this).offset().top;
+
+    if (topDistance < scrollTop) {
+      var divId = $(this).attr('id');
+      $('a').removeClass('active');
+      $('a[href="#' + divId + '"]').addClass('active');
+    }
+  });
+});
+
+/**
+ * Scripts for pause video, show and hide a custom play button for a video
+ */
+document.getElementById('player').pause();
+document.getElementById('video-play').addEventListener('click', function () {
+  document.getElementById('player').play();
+  document.getElementById('video-play').style.display = 'none';
+});
+document.getElementById('player').onended = function () {
+  document.getElementById('video-play').style.display = 'block';
+};
