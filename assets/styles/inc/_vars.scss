@@ -8,19 +8,23 @@ $gold: #ddc557; // tables
 $dark-gray: #aaaaaa; // titles of sidebar
 $granite-gray: #666666; // meta data for post
 $pine-tree: #2b2b27; // footer bg
-$raisin-black: #271c28; // alt text color
 $eerie-black: #1b1b1b; // tables
-$raisin-black: #212121; // body bg
+$raisin-black-1: #271c28; // alt text color
+$raisin-black-2: #212121; // body bg
+$raisin-black-3: #271b27; // sticky header bg
 
 $primary-color: $white;
 $sub-color: $pale-yellow;
 
-$body-bg: $raisin-black;
+$body-bg: $raisin-black-2;
 $footer-bg: $pine-tree;
 $tab-item-bg: $dark-vanilla;
+$sticky-header-bg: $raisin-black-3;
+$table-cell-bg-1: $eerie-black;
+$table-cell-bg-2: $gold;
 
 $text-color: $white;
-$text-alt-color: $raisin-black;
+$text-alt-color: $raisin-black-1;
 
 $paragraph-font-size: (
   small: 16px,
@@ -45,4 +49,10 @@ $fa: 'Font Awesome 6 Free';
 
 * {
   -webkit-tap-highlight-color: transparent;
+
+  :focus {
+    outline: 0 none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }
