@@ -355,7 +355,7 @@ $button-hollow-border-width: 1px;
 $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
-  default: 0.9rem,
+  default: 0.5rem,
   large: 2rem,
 );
 $button-palette: $foundation-palette;
@@ -761,6 +761,7 @@ $responsive-embed-margin-bottom: rem-calc(16);
 $responsive-embed-ratios: (
   default: 4 by 3,
   widescreen: 16 by 9,
+  custom: 1440 by 850,
 );
 
 // 47. Reveal
