@@ -231,7 +231,7 @@ add_shortcode('slider', function () {
             <?php while ($slider->have_posts()) :
                 $slider->the_post(); ?>
                 <div class="slick-slide home-slide">
-                    <div class="home-slide__inner" <?php bg(get_attached_img_url(get_the_ID(), 'full_hd')); ?>>
+                    <div class="home-slide__inner" <?php // bg(get_attached_img_url(get_the_ID(), 'full_hd')); ?>>
                         <?php $bg_video_url = get_post_meta(get_the_ID(), 'slide_video_bg', true); ?>
                         <?php if (get_post_format() == 'video' && $bg_video_url) : ?>
                             <div class="videoHolder show-for-large"
@@ -262,8 +262,14 @@ add_shortcode('slider', function () {
                         <div class="grid-container home-slide__caption">
                             <div class="grid-x grid-margin-x">
                                 <div class="cell">
-                                    <h1><?php the_title(); ?></h1>
-                                    <?php the_content(); ?>
+                                    <div class="grid-y grid-margin-y">
+                                        <div class="cell medium-6">
+                                            <h1><?php the_title(); ?></h1>
+                                        </div>
+                                        <div class="cell medium-3">
+                                            <?php the_content(); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
