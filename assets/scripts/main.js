@@ -300,3 +300,8 @@ document.getElementById('video-play').addEventListener('click', function () {
 document.getElementById('player').onended = function () {
   document.getElementById('video-play').style.display = 'block';
 };
+
+/**
+ * Scripts for remove ginput_complex classe from all tags of the contacts-section
+ */
+$('.contacts-section *').removeClass('ginput_complex');
