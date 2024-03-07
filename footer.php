@@ -8,7 +8,7 @@
 <footer class="footer">
     <div class="grid-container">
         <div class="grid-x grid-margin-x">
-            <div class="cell large-3">
+            <div class="cell large-2">
                 <div class="footer__logo">
                     <?php if ($footer_logo = get_field('footer_logo', 'options')) :
                         echo wp_get_attachment_image($footer_logo['id'], 'medium');
@@ -17,30 +17,75 @@
                     endif; ?>
                 </div>
             </div>
-            <div class="cell large-6">
-                <?php
-                if (has_nav_menu('footer-menu')) {
-                    wp_nav_menu(array('theme_location' => 'footer-menu', 'menu_class' => 'footer-menu', 'depth' => 1));
-                }
-                ?>
+            <div class="cell large-2 large-offset-1">
+                <div class="grid-x row-gap-60">
+                    <?php if (has_nav_menu('footer-menu')) : ?>
+                        <div class="cell">
+                            <h6 class="footer__title">
+                                <?php echo wp_get_nav_menu_name('footer-menu'); ?>
+                            </h6>
+                        </div>
+                        <div class="cell">
+                            <?php wp_nav_menu(array('theme_location' => 'footer-menu', 'menu_class' => 'footer-menu', 'depth' => 1)); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="cell large-2">
+                <div class="grid-x row-gap-60">
+                    <?php if (has_nav_menu('footer-menu-2')) : ?>
+                        <div class="cell">
+                            <h6 class="footer__title">
+                                <?php echo wp_get_nav_menu_name('footer-menu-2'); ?>
+                            </h6>
+                        </div>
+                        <div class="cell">
+                            <?php wp_nav_menu(array('theme_location' => 'footer-menu-2', 'menu_class' => 'footer-menu', 'depth' => 1)); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="cell large-2">
+                <div class="grid-x row-gap-60">
+                    <?php if (has_nav_menu('footer-menu-3')) : ?>
+                        <div class="cell">
+                            <h6 class="footer__title">
+                                <?php echo wp_get_nav_menu_name('footer-menu-3'); ?>
+                            </h6>
+                        </div>
+                        <div class="cell">
+                            <?php wp_nav_menu(array('theme_location' => 'footer-menu-3', 'menu_class' => 'footer-menu', 'depth' => 1)); ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="cell large-3 footer__sp">
-                <?php get_template_part('parts/socials'); // Social profiles?>
+                <div class="grid-y row-gap-60">
+                    <?php if (get_field('socials', 'options')) : ?>
+                    <div class="cell">
+                        <h6 class="footer__title">
+                            <?php _e('JOIN OUR COMMUNITY'); ?>
+                        </h6>
+                    </div>
+                    <div class="cell large-8">
+                        <?php get_template_part('parts/socials');?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if ($copyright = get_field('copyright', 'options')) : ?>
+                        <div class="cell footer__copy large-8">
+                            <div class="grid-x grid-margin-x">
+                                <div class="cell ">
+                                    <?php echo $copyright; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
 
-    <?php if ($copyright = get_field('copyright', 'options')) : ?>
-        <div class="footer__copy">
-            <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                    <div class="cell ">
-                        <?php echo $copyright; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
+
 </footer>
 <!-- END of footer -->
 
