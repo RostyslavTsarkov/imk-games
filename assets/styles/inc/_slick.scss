@@ -31,7 +31,7 @@ $slick-arrow-size: 2rem;
 }
 
 .slick-next {
-  right: 2rem;
+  right: 5rem;
 }
 
 /* Dots */
@@ -47,6 +47,55 @@ $slick-arrow-size: 2rem;
       &::before {
         font-weight: 900;
       }
+    }
+  }
+}
+
+.slider-section {
+  .testimonial-slide {
+    &__border-img {
+      width: 91%;
+      height: 86%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      z-index: 0;
+    }
+
+    &__button {
+      width: rem-calc(170);
+      height: rem-calc(45);
+      padding: 0.75rem;
+
+      position: absolute;
+      bottom: 4%;
+      left: 50%;
+      translate: -50% 0;
+
+      color: $text-alt-color;
+      background-color: $primary-color;
+      font-size: rem-calc(20);
+
+      &:hover {
+        background-color: $sub_color;
+      }
+    }
+
+    &__substrate {
+      position: absolute;
+      top: -3%;
+      left: 50%;
+      translate: -50% 0;
+    }
+
+    &__avatar {
+      position: absolute;
+      top: -8%;
+      left: 50%;
+      translate: -50% 0;
+
+      border-radius: 50%;
     }
   }
 }
