@@ -34,6 +34,7 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
       padding: 0.5em 1em;
       @include not_in($ignoredFieldTypes) {
         height: 5rem;
+        width: 100%;
         padding-inline: 3rem 1rem;
 
         position: relative;
@@ -69,16 +70,16 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
     }
 
     .gform_button {
-      width: 100% !important;
-      height: 90px !important;
+      width: 100%;
+      height: 90px;
 
-      color: $black !important;
-      background-color: $gold !important;
-      border-radius: 10px !important;
+      color: $black;
+      background-color: $gold;
+      border-radius: 10px;
 
-      font-size: rem-calc(28) !important;
-      font-family: $sub-font !important;
-      text-transform: uppercase !important;
+      font-size: rem-calc(28);
+      font-family: $sub-font;
+      text-transform: uppercase;
     }
 
     textarea {
@@ -544,6 +545,8 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
 }
 
 .ginput_complex {
+  width: 100%;
+
   > span {
     display: block;
   }
