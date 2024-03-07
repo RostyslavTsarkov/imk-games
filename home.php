@@ -6,6 +6,20 @@
  */
 get_header(); ?>
 
+<div class="header__img">
+    <?php if ($img = get_field('blog_featured_image', 'options')) : ?>
+        <?php echo wp_get_attachment_image($img, false, false, array('class' => 'header__featured-img stretched-img')); ?>
+    <?php endif; ?>
+    <div class="img-mask-black-50"></div>
+</div>
+<div class="header__title">
+    <div class="grid-container">
+        <div class="grid-x align-bottom">
+            <h2 class="page-title page-title--category"><?php echo get_the_archive_title(); ?></h2>
+        </div>
+    </div>
+</div>
+
 <main class="main-content">
     <div class="grid-container">
         <div class="grid-x grid-margin-x posts-list">
