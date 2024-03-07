@@ -13,8 +13,72 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
     textarea {
       padding: 0.5em 1em;
       @include not_in($ignoredFieldTypes) {
-        padding: 0.5em 1em;
+        height: 5rem;
+        padding-inline: 3rem;
+
+        color: $primary-color;
+        background-color: transparent;
+        border: 4px solid $tab-item-bg;
+        border-radius: 10px;
+
+        font-family: $sub-font;
+        font-size: rem-calc(26);
+
+        &::placeholder {
+          color: $granite-gray;
+        }
       }
+    }
+
+    select {
+      padding: 0.5em 1em;
+      @include not_in($ignoredFieldTypes) {
+        height: 5rem;
+        padding-inline: 3rem 1rem;
+
+        position: relative;
+
+        color: $primary-color;
+        background-color: transparent;
+        border: 4px solid $tab-item-bg;
+        border-radius: 10px;
+
+        font-family: $sub-font;
+        font-size: rem-calc(26);
+
+        background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            $primary-color 50%
+          ),
+          linear-gradient(135deg, $primary-color 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px), 100% 0;
+        background-size: 7px 10px, 7px 10px, 10px 10px;
+
+        &:has(option[value='']:checked) {
+          color: $granite-gray;
+        }
+
+        option {
+          color: $primary-color;
+          font-size: rem-calc(14);
+          background-color: $body-bg;
+        }
+      }
+    }
+
+    .gform_button {
+      width: 100% !important;
+      height: 90px !important;
+
+      color: $black !important;
+      background-color: $gold !important;
+      border-radius: 10px !important;
+
+      font-size: rem-calc(28) !important;
+      font-family: $sub-font !important;
+      text-transform: uppercase !important;
     }
 
     textarea {
@@ -69,7 +133,7 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
 
     .gfield {
       position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       list-style: none;
     }
 
@@ -479,49 +543,67 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
   }
 }
 
-//.ginput_complex {
-//  > span {
-//    display: block;
-//  }
-//
-//  @include breakpoint(medium) {
-//    margin-right: #{-$fields-gap / 2};
-//    margin-left: #{-$fields-gap / 2};
-//
-//    &::after {
-//      content: '';
-//      display: table;
-//      clear: both;
-//    }
-//
-//    > span {
-//      display: block;
-//      float: left;
-//      width: calc(50% - #{$fields-gap});
-//      margin-right: #{$fields-gap / 2};
-//      margin-bottom: 20px;
-//      margin-left: #{$fields-gap / 2};
-//
-//      &.ginput_full {
-//        width: calc(100% - #{$fields-gap});
-//
-//        > span {
-//          display: block;
-//          float: left;
-//          width: calc(50% - #{$fields-gap});
-//        }
-//      }
-//
-//      @include last-grid-row(2) {
-//        margin-bottom: 0;
-//      }
-//    }
-//  }
-//
-//  label {
-//    @extend .show-for-sr; // Comment this line to display complex field labels (Name, Address etc.)
-//  }
-//}
+.ginput_complex {
+  > span {
+    display: block;
+  }
+
+  @include breakpoint(medium) {
+    //margin-right: #{-$fields-gap / 2};
+    //margin-left: #{-$fields-gap / 2};
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    > span {
+      //display: block;
+      float: left;
+      width: calc(50% - #{$fields-gap});
+      //margin-right: #{$fields-gap / 2};
+      //margin-bottom: 20px;
+      //margin-left: #{$fields-gap / 2};
+
+      &.ginput_address_state {
+        padding-right: 0 !important;
+
+        > input {
+          border-right: 2px solid $sub-color !important;
+          border-radius: 15px 0 0 15px !important;
+        }
+      }
+
+      &.ginput_address_country {
+        padding-left: 0 !important;
+
+        > select {
+          border-left: 2px solid $sub-color !important;
+          border-radius: 0 15px 15px 0 !important;
+        }
+      }
+
+      &.ginput_full {
+        width: calc(100% - #{$fields-gap});
+
+        > span {
+          //display: block;
+          float: left;
+          width: calc(50% - #{$fields-gap});
+        }
+      }
+
+      @include last-grid-row(2) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  label {
+    @extend .show-for-sr; // Comment this line to display complex field labels (Name, Address etc.)
+  }
+}
 
 /* ---------------------------------------
   Authorize credit card field
