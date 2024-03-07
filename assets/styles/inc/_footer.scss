@@ -1,6 +1,18 @@
 .footer {
+  min-height: 640px;
+  padding-block: 125px;
   margin-top: auto;
   background-color: $footer-bg;
+
+  font-family: $sub-font;
+
+  &__title {
+    color: $dark-gray;
+    font-family: $sub-font;
+    font-size: rem-calc(23);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 }
 
 .footer__logo {
@@ -10,28 +22,35 @@
 }
 
 .footer__sp {
-  text-align: right;
+  text-align: left;
 }
 
 .footer-menu {
   @include list-unstyled;
 
-  text-align: center;
+  font-size: rem-calc(25);
+  text-align: left;
 
   li {
-    display: inline-block;
+    display: block;
 
     a {
+      color: $granite-gray;
       display: block;
-      padding: 5px 10px;
+      margin-bottom: 24px;
+
+      &:hover {
+        color: $sub-color;
+      }
     }
   }
 }
 
 .footer__copy {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: $light-gray;
-  font-size: 12px;
+  color: $granite-gray;
   text-align: center;
+
+  p {
+    font-size: rem-calc(23);
+  }
 }
