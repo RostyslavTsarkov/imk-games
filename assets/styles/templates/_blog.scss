@@ -3,19 +3,34 @@
 --------------------------------------- */
 
 .preview {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
   border-bottom: 1px solid $medium-gray;
+}
+
+.preview__title {
+  font-family: $sub-font;
+  font-weight: 800;
 }
 
 .preview__meta {
   margin-top: 20px;
   margin-bottom: 0;
   color: $dark-gray;
-  font-size: 14px;
+  font-size: 20px;
+
+  a {
+    color: $sub-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .preview__thumb {
+  object-fit: cover;
+  height: 100%;
   @include breakpoint(small down) {
     margin-bottom: 20px;
   }
@@ -26,14 +41,33 @@
 --------------------------------------- */
 
 .entry__thumb {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .entry__meta {
+  margin-block: 50px;
   color: $dark-gray;
-  font-size: 14px;
+  font-size: 20px;
+
+  a {
+    color: $sub-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .entry__cat {
   margin-top: 20px;
+  color: $primary-color;
+  font-size: 28px;
+}
+
+.entry__content {
+  margin-block: 90px;
+
+  p {
+    margin-bottom: 50px;
+  }
 }
