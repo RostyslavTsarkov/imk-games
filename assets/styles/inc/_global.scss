@@ -75,8 +75,21 @@ main {
 
 /* Search form */
 
-.search {
-  position: relative;
+[data-toggle-block] {
+  display: none;
+}
+
+[data-toggle-block].active {
+  margin-bottom: 20px;
+  display: flex;
+  position: absolute;
+  right: 0;
+}
+
+.search-container .search {
+  .header & {
+    width: 300px;
+  }
 
   .posts-list & {
     margin-bottom: 40px;
@@ -84,7 +97,8 @@ main {
 }
 
 .search__input {
-  padding-right: 75px;
+  padding-right: 60px;
+  background-color: $body-bg;
 }
 
 .search__submit {
@@ -96,6 +110,10 @@ main {
   padding: 10px 15px;
   cursor: pointer;
   //font-size: 0;
+
+  button.search__submit {
+    border-radius: 0 15px 15px 0 !important;
+  }
 
   &::after {
     //content: "\f002";
@@ -188,4 +206,61 @@ img {
   &.lazyloaded {
     opacity: 1;
   }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+%stylish-arrow {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  /* stylelint-disable */
+  background-image: inline-svg(
+    '<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48" width="41" height="45"><defs><clipPath clipPathUnits="userSpaceOnUse" id="cp1"><path d="m-278-5915h1920v11789h-1920z"/></clipPath></defs><style>.a{fill:#fff}</style><g clip-path="url(#cp1)"><path class="a" d="m1 24.2l40 23.5v-47z"/></g></svg>'
+  );
+  /* stylelint-enable */
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+%search-glass {
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  right: 50%;
+  translate: 50%;
+  /* stylelint-disable */
+  background-image: inline-svg(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>'
+  );
+  /* stylelint-enable */
+  background-position: 50% 50%;
+  background-size: cover;
+  transform: scale(1, 1) translateY(-50%);
+  filter: invert(1);
+}
+
+.img-mask-black-50 {
+  position: absolute;
+  top: 0;
+  background-color: $text-alt-color;
+  opacity: 0.5;
+  height: 500px;
+  width: 100%;
+  z-index: -1;
+}
+
+.column-gap-90 {
+  column-gap: rem-calc(90);
+}
+
+.row-gap-90 {
+  row-gap: rem-calc(90);
+}
+
+.row-gap-60 {
+  row-gap: rem-calc(60);
 }
