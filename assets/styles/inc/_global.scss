@@ -257,10 +257,20 @@ img {
   column-gap: rem-calc(90);
 }
 
+.column-gap-30 {
+  column-gap: rem-calc(30);
+}
+
 .row-gap-90 {
   row-gap: rem-calc(90);
 }
 
 .row-gap-60 {
   row-gap: rem-calc(60);
+}
+
+.row-gap-25-medium {
+  @include breakpoint(medium down) {
+    row-gap: rem-calc(25);
+  }
 }
