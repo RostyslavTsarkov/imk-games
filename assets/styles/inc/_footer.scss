@@ -6,12 +6,28 @@
 
   font-family: $sub-font;
 
+  @include breakpoint(medium down) {
+    padding-block: 25px 125px;
+  }
+
   &__title {
     color: $dark-gray;
     font-family: $sub-font;
     font-size: rem-calc(23);
     font-weight: 600;
     text-transform: uppercase;
+
+    @include breakpoint(medium down) {
+      text-align: center;
+    }
+  }
+
+  .grid-container {
+    .grid-x {
+      @include breakpoint(large down) {
+        justify-content: space-between;
+      }
+    }
   }
 }
 
@@ -31,13 +47,23 @@
   font-size: rem-calc(25);
   text-align: left;
 
+  @include breakpoint(medium down) {
+    display: flex;
+    justify-content: center;
+    column-gap: rem-calc(30);
+  }
+
   li {
     display: block;
 
     a {
       color: $granite-gray;
       display: block;
-      margin-bottom: 24px;
+      margin-bottom: rem-calc(24);
+
+      @include breakpoint(medium down) {
+        margin-bottom: 0;
+      }
 
       &:hover {
         color: $sub-color;
@@ -49,6 +75,10 @@
 .footer__copy {
   color: $granite-gray;
   text-align: center;
+
+  @include breakpoint(medium down) {
+    margin-top: 30px;
+  }
 
   p {
     font-size: rem-calc(23);
