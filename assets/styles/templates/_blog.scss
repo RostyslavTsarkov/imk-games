@@ -14,10 +14,14 @@
 }
 
 .preview__meta {
-  margin-top: 20px;
+  margin-top: rem-calc(20);
   margin-bottom: 0;
   color: $dark-gray;
-  font-size: 20px;
+  font-size: rem-calc(20);
+
+  @include breakpoint(medium down) {
+    font-size: rem-calc(14);
+  }
 
   a {
     color: $sub-color;
@@ -31,8 +35,10 @@
 .preview__thumb {
   object-fit: cover;
   height: 100%;
+  width: 100%;
+
   @include breakpoint(small down) {
-    margin-bottom: 20px;
+    padding-bottom: rem-calc(20);
   }
 }
 

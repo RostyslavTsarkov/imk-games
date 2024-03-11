@@ -43,6 +43,7 @@
                     </div>
                 </div>
                 <div class="medium-10 small-12 cell rel-content" data-smooth-scroll>
+
                     <?php if (has_nav_menu('header-menu')) : ?>
                         <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
@@ -50,6 +51,9 @@
                             <div class="title-bar-title">Menu</div>
                         </div>
                         <nav class="top-bar" id="main-menu">
+                            <?php if ($decor = get_field('header_menu_decoration', 'options')) : ?>
+                                <?php echo wp_get_attachment_image($decor, false, false, array('class' => 'top-bar__decor')); ?>
+                            <?php endif; ?>
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'header-menu',
                                 'menu_class' => 'menu header-menu',
