@@ -19,6 +19,14 @@
     li {
       font-size: rem-calc(28);
 
+      @include breakpoint(medium down) {
+        font-size: rem-calc(24);
+      }
+
+      @include breakpoint(small down) {
+        font-size: rem-calc(20);
+      }
+
       a {
         color: $sub-color;
 
