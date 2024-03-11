@@ -7,7 +7,7 @@
 <!-- BEGIN of footer -->
 <footer class="footer">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x row-gap-60">
             <div class="cell large-2">
                 <div class="footer__logo">
                     <?php if ($footer_logo = get_field('footer_logo', 'options')) :
@@ -17,8 +17,8 @@
                     endif; ?>
                 </div>
             </div>
-            <div class="cell large-2 large-offset-1">
-                <div class="grid-x row-gap-60">
+            <div class="cell xlarge-offset-1 large-2">
+                <div class="grid-x row-gap-60 row-gap-25-medium">
                     <?php if (has_nav_menu('footer-menu')) : ?>
                         <div class="cell">
                             <h6 class="footer__title">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="cell large-2">
-                <div class="grid-x row-gap-60">
+                <div class="grid-x row-gap-60 row-gap-25-medium">
                     <?php if (has_nav_menu('footer-menu-2')) : ?>
                         <div class="cell">
                             <h6 class="footer__title">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="cell large-2">
-                <div class="grid-x row-gap-60">
+                <div class="grid-x row-gap-60 row-gap-25-medium">
                     <?php if (has_nav_menu('footer-menu-3')) : ?>
                         <div class="cell">
                             <h6 class="footer__title">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="cell large-3 footer__sp">
-                <div class="grid-y row-gap-60">
+                <div class="grid-y row-gap-60 row-gap-25-medium">
                     <?php if (get_field('socials', 'options')) : ?>
                     <div class="cell">
                         <h6 class="footer__title">
@@ -73,8 +73,8 @@
                     <?php endif; ?>
                     <?php if ($copyright = get_field('copyright', 'options')) : ?>
                         <div class="cell footer__copy large-8">
-                            <div class="grid-x grid-margin-x">
-                                <div class="cell ">
+                            <div class="grid-x grid-margin-x ">
+                                <div class="cell">
                                     <?php echo $copyright; ?>
                                 </div>
                             </div>
