@@ -22,9 +22,9 @@ get_header(); ?>
 
 <main class="main-content">
     <div class="grid-container">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x row-gap-60">
             <!-- BEGIN Category Content -->
-            <div class="large-8 medium-8 small-12 cell posts-list">
+            <div class="large-8 cell posts-list">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) :
                         the_post(); ?><!-- BEGIN of Post -->
@@ -37,7 +37,7 @@ get_header(); ?>
             </div>
             <!-- END Category Content -->
             <!-- BEGIN of Sidebar -->
-            <div class="large-4 medium-4 small-12 cell sidebar">
+            <div class="large-4 cell sidebar">
                 <?php get_sidebar('right'); ?>
             </div>
             <!-- END of Sidebar -->
