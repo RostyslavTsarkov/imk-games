@@ -1,5 +1,7 @@
 .header {
   background-color: transparent;
+  //position: absolute;
+  //width: 100%;
 
   .sticky.is-stuck {
     background-color: $sticky-header-bg;
@@ -130,15 +132,22 @@
   /* TOP BAR STYLING */
 
   .menu-grid-container {
-    min-height: 155px; //190px
+    min-height: rem-calc(155); //190px
+    font-family: $sub-font;
+    font-size: rem-calc(22);
+    font-weight: 900;
 
-    .sticky.is-stuck & {
-      min-height: 155px;
+    @include breakpoint(1750px down) {
+      font-size: rem-calc(16);
     }
 
-    font-family: $sub-font;
-    font-size: 22px;
-    font-weight: 900;
+    @include breakpoint(large down) {
+      font-size: rem-calc(22);
+    }
+
+    .sticky.is-stuck & {
+      min-height: rem-calc(155);
+    }
 
     > .grid-x {
       min-height: inherit;
@@ -152,11 +161,21 @@
     .top-bar {
       display: flex;
       justify-content: flex-end;
+
+      &__decor {
+        height: 15px;
+        align-self: center;
+
+        @include breakpoint(xlarge down) {
+          display: none;
+        }
+      }
     }
 
     li {
       > a {
         /* Regular menu item style */
+
         line-height: 40px;
         color: $primary-color;
 
