@@ -38,6 +38,7 @@ h3,
   text-transform: uppercase;
   font-weight: 900;
   font-family: $sub-font;
+  letter-spacing: 0.75rem;
 }
 
 h4,
@@ -62,6 +63,14 @@ h6,
 p {
   /* basic paragraph styles */
   font-size: rem-calc(28);
+
+  @include breakpoint(large down) {
+    font-size: rem-calc(24);
+  }
+
+  @include breakpoint(small down) {
+    font-size: rem-calc(16);
+  }
 
   &:empty {
     display: none;
