@@ -160,7 +160,12 @@ get_header(); ?>
                     <?php if ($cover = get_field('home_video_cover')) : ?>
                         <?php echo wp_get_attachment_image($cover, false, false, array('class' => 'cover stretched-img', 'id' => 'video-cover')); ?>
                     <?php endif; ?>
-                    <video id="player" width="1440" height="850" src="<?php echo $video; ?>" frameborder="0" allowfullscreen muted>
+                    <video id="player" width="1440" height="850"
+                           src="<?php echo $video; ?>"
+                           frameborder="0"
+                           allowfullscreen
+                           preload="none"
+                           muted="muted">
                     </video>
                     <?php if ($button = get_field('home_video_play_button')) : ?>
                         <button class="play-button" id="video-play">
@@ -265,14 +270,24 @@ get_header(); ?>
 <!-- END of tables section -->
 
 <!-- BEGIN of blog section -->
-<section class="blog-section" id="blog">
+<section class="blog-section rel-content" id="blog">
     <div class="grid-container">
-        <div class="grid-x">
+        <div class="grid-x rel-content">
+            <?php if ($section_decor = get_field('home_blog_left_decoration')) : ?>
+                <?php echo wp_get_attachment_image($section_decor, false, false, array('class' => 'blog-section__side-decor left')); ?>
+            <?php endif; ?>
+            <?php if ($section_decor = get_field('home_blog_right_decoration')) : ?>
+                <?php echo wp_get_attachment_image($section_decor, false, false, array('class' => 'blog-section__side-decor right')); ?>
+            <?php endif; ?>
             <?php if ($title = get_field('home_blog_title')) : ?>
-                <div class="cell text-center">
-                    <span class="blog-decor"></span>
+                <div class="cell text-center rel-content">
+                    <?php if ($title_decor = get_field('home_blog_title_decoration')) : ?>
+                        <?php echo wp_get_attachment_image($title_decor, false, false, array('class' => 'blog-section__title-decor left')); ?>
+                    <?php endif; ?>
                     <h3 class="section__title"><?php echo $title; ?></h3>
-                    <span class="blog-decor"></span>
+                    <?php if ($title_decor) : ?>
+                        <?php echo wp_get_attachment_image($title_decor, false, false, array('class' => 'blog-section__title-decor right')); ?>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
             <?php if ($posts = get_field('home_blog_featured_posts')) : ?>
@@ -296,11 +311,20 @@ get_header(); ?>
             <?php endif; ?>
         </div>
     </div>
+    <?php if ($section_decor = get_field('home_blog_bottom_decoration')) : ?>
+        <?php echo wp_get_attachment_image($section_decor, false, false, array('class' => 'blog-section__bottom-decor')); ?>
+    <?php endif; ?>
 </section>
 <!-- END of blog section -->
 
 <!-- BEGIN of contacts section -->
 <section class="contacts-section rel-content" id="contacts">
+    <?php if ($section_decor = get_field('home_contact_left_decoration')) : ?>
+        <?php echo wp_get_attachment_image($section_decor, false, false, array('class' => 'contacts-section__side-decor left')); ?>
+    <?php endif; ?>
+    <?php if ($section_decor = get_field('home_contact_right_decoration')) : ?>
+        <?php echo wp_get_attachment_image($section_decor, false, false, array('class' => 'contacts-section__side-decor right')); ?>
+    <?php endif; ?>
     <?php if ($bg_img = get_field('home_contact_background_image')) : ?>
         <?php echo wp_get_attachment_image($bg_img, false, false, array('class' => 'contacts-section__img stretched-img')); ?>
     <?php endif; ?>
