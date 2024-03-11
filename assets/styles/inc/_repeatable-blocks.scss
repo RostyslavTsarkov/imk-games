@@ -10,6 +10,11 @@
   margin-right: -5px;
   margin-left: -5px;
   font-size: 0;
+
+  @include breakpoint(medium down) {
+    justify-content: center;
+    gap: rem-calc(20);
+  }
 }
 
 .stay-tuned__item {
@@ -105,7 +110,6 @@
   .preview__meta {
     margin-top: 0;
     color: $primary-color;
-    font-size: rem-calc(28);
     font-weight: 700;
   }
 
