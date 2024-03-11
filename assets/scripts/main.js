@@ -292,14 +292,13 @@ $(window).scroll(function () {
 /**
  * Scripts for pause video, show and hide a custom play button for a video
  */
-document.getElementById('player').pause();
-document.getElementById('video-play').addEventListener('click', function () {
-  document.getElementById('player').play();
-  document.getElementById('video-play').style.display = 'none';
+$('#video-play').click(function () {
+  $('#player')[0].play();
+  $('#video-play').hide();
 });
-document.getElementById('player').onended = function () {
-  document.getElementById('video-play').style.display = 'block';
-};
+$('#player').on('ended', function () {
+  $('#video-play').show();
+});
 
 /**
  * Scripts for remove ginput_complex classe from all tags of the contacts-section
