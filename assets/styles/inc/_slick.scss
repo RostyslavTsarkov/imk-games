@@ -52,7 +52,7 @@ $slick-arrow-size: 2rem;
 }
 
 .slider-section {
-  .testimonial-slide {
+  .testimonial-slider {
     &__border-img {
       width: 91%;
       height: 86%;
@@ -89,13 +89,38 @@ $slick-arrow-size: 2rem;
       translate: -50% 0;
     }
 
+    .home-slide {
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+    }
+
     &__avatar {
+      height: rem-calc(315);
+      width: rem-calc(315);
+      margin-top: -75px;
+
       position: absolute;
-      top: -8%;
+      top: 0;
       left: 50%;
       translate: -50% 0;
 
       border-radius: 50%;
+    }
+
+    &__decor {
+      height: 10px;
+      width: 80px;
+      background-color: $primary-color;
+    }
+
+    .home-slide__caption {
+      padding-top: rem-calc(130);
+      padding-inline: rem-calc(275);
+
+      p {
+        line-height: 2em;
+      }
     }
   }
 }
