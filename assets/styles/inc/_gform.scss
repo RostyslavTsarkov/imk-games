@@ -35,7 +35,7 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
       @include not_in($ignoredFieldTypes) {
         height: 5rem;
         width: 100%;
-        padding-inline: 3rem 1rem;
+        padding-inline: 3rem 3rem;
 
         position: relative;
 
@@ -47,15 +47,25 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
         font-family: $sub-font;
         font-size: rem-calc(26);
 
-        background-image: linear-gradient(
-            45deg,
-            transparent 50%,
-            $primary-color 50%
-          ),
-          linear-gradient(135deg, $primary-color 50%, transparent 50%);
-        background-position: calc(100% - 20px) calc(1em + 2px),
-          calc(100% - 15px) calc(1em + 2px), 100% 0;
-        background-size: 7px 10px, 7px 10px, 10px 10px;
+        /*&::before {
+          content: '';
+          height: 10px;
+          width: 10px;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          background-image: linear-gradient(
+              45deg,
+              transparent 50%,
+              $primary-color 50%
+            ),
+            linear-gradient(135deg, $primary-color 50%, transparent 50%);
+          background-position: calc(100% - 20px) calc(1em + 2px),
+            calc(100% - 15px) calc(1em + 2px), 100% 0;
+          background-size: 7px 10px, 7px 10px, 10px 10px;
+        }*/
 
         &:has(option[value='']:checked) {
           color: $granite-gray;
@@ -71,7 +81,8 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
 
     .gform_button {
       width: 100%;
-      height: 90px;
+      height: rem-calc(90);
+      margin-top: rem-calc(30);
 
       color: $black;
       background-color: $gold;
@@ -125,6 +136,8 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
     .gform_fields {
       margin: 0;
 
+      column-gap: 0 !important;
+
       &::after {
         content: '';
         display: table;
@@ -134,8 +147,43 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
 
     .gfield {
       position: relative;
-      margin-bottom: 30px;
+      margin-bottom: rem-calc(40);
       list-style: none;
+    }
+
+    .gfield.gfield--type-address {
+      //display: inline-block !important;
+
+      .ginput_container {
+        margin-inline: auto;
+
+        span {
+          padding-inline: 0px;
+        }
+      }
+
+      &:has(.has_state) {
+        grid-column: 7 / 1;
+
+        select {
+          border-right: 3px solid $sub-color !important;
+          border-radius: 15px 0 0 15px !important;
+        }
+      }
+    }
+
+    .gfield--full-width {
+      grid-column: 1 / -1;
+    }
+
+    .gfield--half-width {
+      grid-column: 7 / -1 !important;
+
+      select {
+        margin-left: auto;
+        border-left: 3px solid $sub-color !important;
+        border-radius: 0 15px 15px 0 !important;
+      }
     }
 
     .gform_hidden {
@@ -568,24 +616,6 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
       //margin-right: #{$fields-gap / 2};
       //margin-bottom: 20px;
       //margin-left: #{$fields-gap / 2};
-
-      &.ginput_address_state {
-        padding-right: 0 !important;
-
-        > input {
-          border-right: 2px solid $sub-color !important;
-          border-radius: 15px 0 0 15px !important;
-        }
-      }
-
-      &.ginput_address_country {
-        padding-left: 0 !important;
-
-        > select {
-          border-left: 2px solid $sub-color !important;
-          border-radius: 0 15px 15px 0 !important;
-        }
-      }
 
       &.ginput_full {
         width: calc(100% - #{$fields-gap});
