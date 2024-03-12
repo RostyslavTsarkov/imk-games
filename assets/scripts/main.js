@@ -301,6 +301,34 @@ $('#player').on('ended', function () {
 });
 
 /**
- * Scripts for remove ginput_complex classe from all tags of the contacts-section
+ * Scripts for remove classes from Gravity Forms inputs
  */
 $('.contacts-section *').removeClass('ginput_complex');
+$('.contacts-section *').removeClass('gfield--width-half');
+
+/**
+ * Scripts for change classes
+ */
+$(document).ready(function () {
+  $('.gfield.gfield--type-address:has(.has_country)').change(function () {
+    if (
+      $('.gfield.gfield--type-address:has(.has_country) select').val() ===
+        'United States' &&
+      $('.gfield.gfield--type-address:has(.has_state)').css('display') ===
+        'none'
+    ) {
+      $('.gfield.gfield--type-address:has(.has_country)')
+        .removeClass('gfield--full-width')
+        .addClass('gfield--half-width');
+    } else if (
+      $('.gfield.gfield--type-address:has(.has_country) select').val() !==
+        'United States' &&
+      $('.gfield.gfield--type-address:has(.has_state)').css('display') ===
+        'block'
+    ) {
+      $('.gfield.gfield--type-address:has(.has_country)')
+        .removeClass('gfield--half-width')
+        .addClass('gfield--full-width');
+    }
+  });
+});
