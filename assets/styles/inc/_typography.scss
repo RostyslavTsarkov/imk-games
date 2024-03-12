@@ -69,7 +69,7 @@ p {
   }
 
   @include breakpoint(small down) {
-    font-size: rem-calc(16);
+    font-size: rem-calc(20);
   }
 
   &:empty {
@@ -321,7 +321,7 @@ button.search__submit {
 /* Button additional styles */
 .button {
   &.large {
-    height: 135px;
+    height: rem-calc(135);
 
     display: flex;
     justify-content: center;
@@ -331,6 +331,11 @@ button.search__submit {
     border: 1px solid $primary-color;
 
     text-transform: uppercase;
+
+    @include breakpoint(medium down) {
+      height: rem-calc(55);
+      font-size: rem-calc(20);
+    }
 
     &.alt {
       color: $text-alt-color;
