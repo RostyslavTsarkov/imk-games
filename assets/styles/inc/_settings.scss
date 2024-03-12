@@ -290,7 +290,7 @@ $accordion-minus-content: '';
 $accordion-title-font-size: rem-calc(40);
 $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $text-alt-color;
-$accordion-item-padding: 1.75rem 2rem;
+$accordion-item-padding: 1.75rem 7rem 1.75rem 2rem;
 $accordion-content-background: transparent;
 $accordion-content-border: 5px solid $sub-color;
 $accordion-content-color: $body-font-color;
@@ -442,9 +442,9 @@ $drilldown-arrow-size: 6px;
 // 17. Dropdown
 // ------------
 
-$dropdown-padding: 1rem;
-$dropdown-background: $body-background;
-$dropdown-border: 1px solid $medium-gray;
+$dropdown-padding: 0;
+$dropdown-background: $sub-color;
+$dropdown-border: 2px solid $text-alt-color;
 $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
@@ -812,7 +812,7 @@ $switch-cursor-disabled: not-allowed;
 // 50. Table
 // ---------
 
-$table-background: $white;
+$table-background: transparent;
 $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
@@ -822,7 +822,7 @@ $table-row-stripe-hover: darken(
   $table-background,
   $table-color-scale + $table-hover-scale
 );
-$table-is-striped: true;
+$table-is-striped: false;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale / 2);
