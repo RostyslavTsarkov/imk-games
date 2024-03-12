@@ -24,20 +24,47 @@ get_header(); ?>
 <?php if ($top_tabs = get_field('home_top_tabs')) : ?>
 <section class="tabs-section" id="tabs">
     <div class="grid-container">
-        <ul class="tabs" data-tabs id="top-tabs">
-            <?php foreach ($top_tabs as $i => $tab) :
-                if ($i == 0) : ?>
-                    <li class="tabs-title is-active">
-                        <a href="#panel<?php echo $i?>h" aria-selected="true">
-                <?php else : ?>
-                    <li class="tabs-title">
-                        <a href="#panel<?php echo $i?>h"">
-                <?php endif; ?>
-                            <?php echo $tab['title']; ?>
-                        </a>
-                    </li>
-            <?php endforeach; ?>
-        </ul>
+
+        <!-- BEGIN of tabs layout for small -->
+        <div class="hide-for-large show-for-small">
+            <a class="button tabs-dropdown" type="button" data-toggle="small-tabs">LOREM IPSUME</a>
+            <div class="dropdown-pane" id="small-tabs" data-dropdown data-auto-focus="true">
+                <ul class="" data-tabs id="top-tabs">
+                    <?php foreach ($top_tabs as $i => $tab) :
+                        if ($i == 0) : ?>
+                            <li class="tabs-title is-active">
+                                <a href="#panel<?php echo $i?>h" aria-selected="true">
+                        <?php else : ?>
+                             <li class="tabs-title">
+                                <a href="#panel<?php echo $i?>h">
+                        <?php endif; ?>
+                        <?php echo $tab['title']; ?>
+                                </a>
+                             </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+        <!-- END of tabs layout for large -->
+
+        <!-- BEGIN of tabs layout for large -->
+        <div class="show-for-large">
+            <ul class="tabs" data-tabs id="top-tabs">
+                <?php foreach ($top_tabs as $i => $tab) :
+                    if ($i == 0) : ?>
+                        <li class="tabs-title is-active">
+                            <a href="#panel<?php echo $i?>h" aria-selected="true">
+                    <?php else : ?>
+                        <li class="tabs-title">
+                            <a href="#panel<?php echo $i?>h">
+                    <?php endif; ?>
+                                <?php echo $tab['title']; ?>
+                            </a>
+                        </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <!-- END of tabs layout for large -->
 
         <div class="tabs-content rel-content" data-tabs-content="top-tabs">
             <?php foreach ($top_tabs as $i => $tab) :
@@ -47,29 +74,29 @@ get_header(); ?>
                     <div class="tabs-panel"
                 <?php endif; ?>
                     id="panel<?php echo $i?>h">
-                        <div class="grid-x">
-                            <div class="cell large-8">
-                                <div class="grid-x tabs-panel__main-content">
-                                    <div class="cell large-6 main-content__text rel-content">
-                                        <?php echo $tab['main_content']; ?>
-                                    </div>
-                                    <div class="cell large-9">
-                                        <a class="button large alt expanded"
-                                            href="<?php echo $tab['link']['url']; ?>">
-                                            <?php echo $tab['link']['title']; ?>
-                                        </a>
-                                    </div>
+                    <div class="grid-x row-gap-60">
+                        <div class="cell large-8">
+                            <div class="grid-x tabs-panel__main-content">
+                                <div class="cell large-6 main-content__text rel-content">
+                                    <?php echo $tab['main_content']; ?>
+                                </div>
+                                <div class="cell large-9">
+                                    <a class="button large alt expanded"
+                                       href="<?php echo $tab['link']['url']; ?>">
+                                        <?php echo $tab['link']['title']; ?>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="cell large-4 tabs-panel__side-content rel-content">
-                                <div class="grid-x">
-                                    <div class="cell medium-offset-4 medium-8">
-                                        <?php echo $tab['side_content']; ?>
-                                    </div>
+                        </div>
+                        <div class="cell large-4 tabs-panel__side-content rel-content">
+                            <div class="grid-x">
+                                <div class="cell large-offset-4 large-8">
+                                    <?php echo $tab['side_content']; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -82,8 +109,8 @@ get_header(); ?>
 <section class="side-nav-section" id="side-nav">
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell medium-3">
-                <ul class="tabs vertical" data-tabs id="example-tabs">
+            <div class="cell large-3">
+                <ul class="tabs vertical" data-responsive-accordion-tabs="accordion large-tabs" id="side-nav-tabs">
                     <?php foreach ($side_tabs as $i => $tab) :
                         if ($i == 0) : ?>
                             <li class="tabs-title is-active">
@@ -98,8 +125,8 @@ get_header(); ?>
                     <?php endforeach; ?>
                 </ul>
             </div>
-            <div class="cell medium-offset-1 medium-8">
-                <div class="tabs-content vertical" data-tabs-content="example-tabs">
+            <div class="cell large-offset-1 large-8">
+                <div class="tabs-content vertical" data-tabs-content="side-nav-tabs">
                     <?php foreach ($side_tabs as $i => $tab) :
                         if ($i == 0) : ?>
                             <div class="tabs-panel is-active"
@@ -209,7 +236,7 @@ get_header(); ?>
                         'fields' => 'ids',
                     );
                     $all_plan_features = get_terms($args); ?>
-                    <table class="order-table">
+                    <table class="stack order-table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -331,13 +358,15 @@ get_header(); ?>
     <div class="grid-container rel-content">
         <div class="contact-form">
             <?php if ($title = get_field('home_contact_title')) : ?>
-                <div class="cell large-4">
+                <div class="cell xxxlarge-4 large-6">
                     <h2 class="section__title text-center"><?php echo $title; ?></h2>
                 </div>
             <?php endif; ?>
-                <div class="cell large-4">
-                    <?php gravity_form('1', false, false, false, '', true, 1); ?>
+            <?php if ($gf_id = get_field('home_contact_form')) : ?>
+                <div class="cell xxxlarge-4 large-6">
+                    <?php gravity_form($gf_id['fields'][0]->formId, false, false, false, '', true, 1); ?>
                 </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
