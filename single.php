@@ -27,14 +27,16 @@ get_header(); ?>
             <div class="grid-container">
                 <div class="grid-x grid-margin-x">
                     <!-- BEGIN of post content -->
-                    <div class="large-8 medium-8 small-12 cell">
+                    <div class="large-8 cell">
                         <article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
                             <?php if (has_post_thumbnail()) : ?>
                                 <div title="<?php the_title_attribute(); ?>" class="entry__thumb">
                                     <?php the_post_thumbnail('large'); ?>
                                 </div>
                             <?php endif; ?>
-                            <p class="entry__meta"><?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time('F j, Y')); ?></p>
+                            <p class="entry__meta">
+                                <?php echo sprintf(__('Written by %s on %s', 'fxy'), get_the_author_posts_link(), get_the_time('F j, Y')); ?>
+                            </p>
                             <div class="entry__content clearfix">
                                 <?php the_content('', true); ?>
                             </div>
@@ -44,7 +46,7 @@ get_header(); ?>
                     <!-- END of post content -->
 
                     <!-- BEGIN of sidebar -->
-                    <div class="large-4 medium-4 small-12 cell sidebar">
+                    <div class="large-4 cell sidebar">
                         <?php get_sidebar('right'); ?>
                     </div>
                     <!-- END of sidebar -->
