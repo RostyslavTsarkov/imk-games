@@ -51,9 +51,14 @@
 }
 
 .entry__meta {
-  margin-block: 50px;
+  //margin-block: rem-calc(50);
   color: $dark-gray;
-  font-size: 20px;
+  font-size: rem-calc(20);
+
+  @include breakpoint(medium down) {
+    //margin-block: rem-calc(10);
+    font-size: rem-calc(14);
+  }
 
   a {
     color: $sub-color;
@@ -71,9 +76,13 @@
 }
 
 .entry__content {
-  margin-block: 90px;
+  margin-block: rem-calc(90);
+
+  @include breakpoint(medium down) {
+    margin-block: rem-calc(45);
+  }
 
   p {
-    margin-bottom: 50px;
+    margin-bottom: 2em;
   }
 }
