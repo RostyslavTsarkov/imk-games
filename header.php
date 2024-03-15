@@ -35,20 +35,22 @@
         <div data-sticky data-options="marginTop:0;">
         <div class="grid-container menu-grid-container">
             <div class="grid-x grid-margin-x">
-                <div class="medium-2 small-12 cell">
-                    <div class="logo text-center medium-text-left">
+                <div class="xlarge-2 large-12 cell small-order-2 medium-order-1">
+                    <div class="logo text-center xlarge-text-left">
                         <h1>
-                            <?php show_custom_logo(); ?><span class="show-for-sr"><?php echo get_bloginfo('name'); ?></span>
+                            <?php show_custom_logo(); ?>
+                            <span class="show-for-sr">
+                                <?php echo get_bloginfo('name'); ?>
+                            </span>
                         </h1>
                     </div>
                 </div>
-                <div class="medium-10 small-12 cell rel-content" data-smooth-scroll>
-
+                <div class="xlarge-10 large-12 cell rel-content small-order-1 medium-order-2" data-smooth-scroll>
                     <?php if (has_nav_menu('header-menu')) : ?>
                         <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
                                 <span></span></button>
-                            <div class="title-bar-title">Menu</div>
+                            <span class="title-bar-title">Menu</span>
                         </div>
                         <nav class="top-bar" id="main-menu">
                             <?php if ($decor = get_field('header_menu_decoration', 'options')) : ?>
@@ -60,10 +62,13 @@
                                 'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
                                 'walker' => new theme\FoundationNavigation()
                             )); ?>
+                            <a class="search-toggle grid-x align-middle" href="#search" data-toggle-click="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                            <div class="grid-x align-right" data-toggle-block="search">
+                                <?php get_search_form(); ?>
+                            </div>
                         </nav>
-                        <div class="grid-x align-right" data-toggle-block="search">
-                            <?php get_search_form(); ?>
-                        </div>
                     <?php endif; ?>
                 </div>
             </div>
