@@ -65,11 +65,11 @@ p {
   font-size: rem-calc(28);
 
   @include breakpoint(large down) {
-    font-size: rem-calc(24);
+    font-size: rem-calc(22);
   }
 
   @include breakpoint(small down) {
-    font-size: rem-calc(20);
+    font-size: rem-calc(16);
   }
 
   &:empty {
@@ -191,6 +191,38 @@ table.order-table {
   & .plan-cell.special a:hover {
     color: $text-alt-color;
   }
+
+  @include breakpoint(medium down) {
+    border: 3px solid $sub-color;
+
+    thead th,
+    tbody td,
+    tfoot td {
+      border: 1px solid $sub-color;
+    }
+
+    thead th,
+    td {
+      padding: rem-calc(15 30 15 20);
+      font-size: rem-calc(28);
+    }
+
+    tbody td {
+      font-weight: 500;
+    }
+
+    thead th,
+    tfoot td {
+      font-weight: 600;
+    }
+  }
+
+  @include breakpoint(small down) {
+    thead th,
+    td {
+      font-size: rem-calc(20);
+    }
+  }
 }
 
 table.projects-table {
@@ -224,6 +256,34 @@ table.projects-table {
     color: $sub-color;
     background-color: transparent;
     border: 2px solid $primary-color;
+  }
+
+  @include breakpoint(medium down) {
+    width: 100%;
+
+    tbody tr td {
+      padding-inline: rem-calc(5 10) !important;
+      color: $sub-color;
+      background-color: transparent;
+      border: 1px solid $primary-color;
+
+      &:first-child {
+        border-right: 0 none;
+      }
+
+      &:last-child {
+        border-left: 0 none;
+      }
+
+      &:empty {
+        padding-block: 3px;
+        border-inline: none;
+      }
+    }
+  }
+
+  @include breakpoint(small down) {
+    font-size: rem-calc(14);
   }
 }
 
@@ -346,10 +406,10 @@ button.search__submit {
         background-color: $tab-item-bg;
       }
     }
-  }
 
-  &:hover,
-  &:focus {
-    background-color: $text-alt-color;
+    &:hover,
+    &:focus {
+      background-color: $text-alt-color;
+    }
   }
 }
