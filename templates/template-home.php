@@ -5,8 +5,6 @@
 get_header(); ?>
 
 <!--START Home featured image-->
-<!--<div class="home__featured-img stretched-img" <?php /*bg(get_attached_img_url(get_the_ID(), 'full_hd')); */?>>
-</div>-->
 <?php if (get_post_thumbnail_id()) : ?>
     <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'full_hd', false, array('class' => 'home__featured-img stretched-img')); ?>
 <?php endif; ?>
@@ -27,16 +25,19 @@ get_header(); ?>
 
         <!-- BEGIN of tabs layout for small -->
         <div class="hide-for-large show-for-small">
-            <a class="button tabs-dropdown" type="button" data-toggle="small-tabs">LOREM IPSUME</a>
+            <a class="button tabs-dropdown" type="button" data-toggle="small-tabs">
+                <span></span>
+                <i class="fa-solid fa-angle-down"></i>
+            </a>
             <div class="dropdown-pane" id="small-tabs" data-dropdown data-auto-focus="true">
                 <ul class="" data-tabs id="top-tabs">
                     <?php foreach ($top_tabs as $i => $tab) :
                         if ($i == 0) : ?>
                             <li class="tabs-title is-active">
-                                <a href="#panel<?php echo $i?>h" aria-selected="true">
+                                <a class="tabs-title-link" href="#panel<?php echo $i?>h" aria-selected="true">
                         <?php else : ?>
                              <li class="tabs-title">
-                                <a href="#panel<?php echo $i?>h">
+                                <a class="tabs-title-link" href="#panel<?php echo $i?>h">
                         <?php endif; ?>
                         <?php echo $tab['title']; ?>
                                 </a>
@@ -152,7 +153,7 @@ get_header(); ?>
         <div class="grid-x">
             <?php if ($title = get_field('home_faq_title')) : ?>
                 <div class="cell text-center">
-                    <h3 class="section__title">
+                    <h3 class="accordion-section__title">
                         <?php echo $title; ?>
                     </h3>
                 </div>
@@ -192,7 +193,10 @@ get_header(); ?>
                            frameborder="0"
                            allowfullscreen
                            preload="none"
-                           muted="muted">
+                           muted="muted"
+                           <?php if ($placeholder = get_field('home_video_placeholder')) : ?>
+                               poster="<?php echo $placeholder; ?>"
+                           <?php endif; ?>>
                     </video>
                     <?php if ($button = get_field('home_video_play_button')) : ?>
                         <button class="play-button" id="video-play">
@@ -226,51 +230,53 @@ get_header(); ?>
     <?php if ($bg_img = get_field('home_plans_background_image')) : ?>
         <?php echo wp_get_attachment_image($bg_img, false, false, array('class' => 'tables__bg-img')); ?>
     <?php endif; ?>
-    <div class="grid-container">
-        <div class="grid-x">
-            <div class="cell">
-                <?php if ($plans = get_field('home_plans')) :
-                    $plans_amount = count($plans);
-                    $args = array(
-                        'taxonomy' => 'plan-feature',
-                        'fields' => 'ids',
-                    );
-                    $all_plan_features = get_terms($args); ?>
-                    <table class="stack order-table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <?php foreach ($plans as $i => $plan) :
-                                    $bg_color = $i != count($plans) - 1 ? 'default' : 'special' ?>
-                                    <th class="plan-cell text-uppercase <?php echo $bg_color; ?>"><?php echo get_the_title($plan->ID); ?></th>
-                                <?php endforeach; ?>
-                            </tr>
-                        </thead>
-                         <?php if ($choosed_plan_features = get_field('home_plan_features')) : ?>
-                            <tbody>
-                                <?php
-                                foreach ($choosed_plan_features as $choosed_feature) : ?>
+
+    <!-- BEGIN of order table for large -->
+    <div class="show-for-large">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell">
+                    <?php if ($plans = get_field('home_plans')) :
+                        $plans_amount = count($plans);
+                        $args = array(
+                            'taxonomy' => 'plan-feature',
+                            'fields' => 'ids',
+                        );
+                        $all_plan_features = get_terms($args); ?>
+                        <table class="order-table">
+                            <thead>
                                 <tr>
-                                    <td><?php echo get_term($choosed_feature)->name; ?></td>
-                                    <?php
-                                    foreach ($plans as $i => $plan) :
-                                        $plan_features = get_the_terms($plan->ID, 'plan-feature');
-                                        $plan_features_ids = array_column($plan_features, 'term_id');
+                                    <th></th>
+                                    <?php foreach ($plans as $i => $plan) :
                                         $bg_color = $i != count($plans) - 1 ? 'default' : 'special' ?>
-                                    <td class="plan-cell text-center <?php echo $bg_color; ?>">
-                                        <?php if (in_array($choosed_feature, $plan_features_ids)) : ?>
-                                            <span class="fa-solid fa-check"></span>
-                                        <?php else : ?>
-                                            <span><?php _e('-', 'fwp')?></span>
-                                        <?php endif; ?>
-                                    </td>
+                                        <th class="plan-cell text-uppercase <?php echo $bg_color; ?>"><?php echo get_the_title($plan->ID); ?></th>
                                     <?php endforeach; ?>
                                 </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                         <?php endif; ?>
-                        <tfoot>
-                            <tr>
+                            </thead>
+                             <?php if ($choosed_plan_features = get_field('home_plan_features')) : ?>
+                                <tbody>
+                                    <?php
+                                    foreach ($choosed_plan_features as $choosed_feature) : ?>
+                                    <tr>
+                                        <td><?php echo get_term($choosed_feature)->name; ?></td>
+                                        <?php
+                                        foreach ($plans as $i => $plan) :
+                                            $plan_features = get_the_terms($plan->ID, 'plan-feature');
+                                            $plan_features_ids = array_column($plan_features, 'term_id');
+                                            $bg_color = $i != count($plans) - 1 ? 'default' : 'special' ?>
+                                        <td class="plan-cell text-center <?php echo $bg_color; ?>">
+                                            <?php if (in_array($choosed_feature, $plan_features_ids)) : ?>
+                                                <span class="fa-solid fa-check"></span>
+                                            <?php else : ?>
+                                                <span><?php _e('-', 'fwp')?></span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                             <?php endif; ?>
+                            <tfoot>
                                 <td></td>
                                 <?php foreach ($plans as $i => $plan) :
                                     $bg_color = $i != count($plans) - 1 ? 'default' : 'special' ?>
@@ -280,16 +286,84 @@ get_header(); ?>
                                         </td>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
-                        </tfoot>
-                    </table>
-                <?php endif; ?>
+                            </tfoot>
+                        </table>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
+    <!-- END of order table for large -->
+
+    <!-- BEGIN of order table for small -->
+    <div class="hide-for-large show-for-small">
+        <div class="grid-container">
+            <div class="grid-x row-gap-30">
+
+                    <?php if ($plans = get_field('home_plans')) :
+                        $plans_amount = count($plans);
+                        $args = array(
+                            'taxonomy' => 'plan-feature',
+                            'fields' => 'ids',
+                        );
+                        $all_plan_features = get_terms($args); ?>
+
+                        <?php foreach ($plans as $i => $plan) :
+                            $bg_color = $i != count($plans) - 1 ? 'default' : 'special' ?>
+
+                            <table class="order-table cell">
+                                <thead>
+                                    <tr>
+                                        <th class="plan-cell text-uppercase text-center <?php echo $bg_color ?>">
+                                            <?php echo get_the_title($plan->ID); ?>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <?php if ($choosed_plan_features = get_field('home_plan_features')) : ?>
+                                    <tbody>
+                                        <?php foreach ($choosed_plan_features as $choosed_feature) : ?>
+                                            <tr>
+                                                <td class="grid-x align-justify"><?php echo get_term($choosed_feature)->name; ?>
+                                                <?php $plan_features = get_the_terms($plan->ID, 'plan-feature');
+                                                    $plan_features_ids = array_column($plan_features, 'term_id'); ?>
+                                                        <?php if (in_array($choosed_feature, $plan_features_ids)) : ?>
+                                                            <span class="fa-solid fa-check"></span>
+                                                        <?php else : ?>
+                                                            <span style="padding-right: 10px;"><?php _e('-', 'fwp')?></span>
+                                                        <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                <?php endif; ?>
+                                <tfoot>
+                                    <tr>
+                                        <?php if ($link = get_field('plan_order_link', $plan)) : ?>
+                                            <td class="plan-cell text-uppercase text-center <?php echo $bg_color ?>">
+                                                <a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a>
+                                            </td>
+                                        <?php endif; ?>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+            </div>
+        </div>
+    </div>
+    <!-- END of order table for small -->
+
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell">
-                <?php echo do_shortcode('[table id=2 responsive="collapse" /]') ?>
+                <div class="show-for-large">
+                    <?php echo do_shortcode('[table id=2/]') ?>
+                </div>
+
+                <div class="hide-for-large show-for-small">
+                    <?php echo do_shortcode('[table id=3/]') ?>
+                </div>
             </div>
         </div>
     </div>
@@ -311,7 +385,7 @@ get_header(); ?>
                     <?php if ($title_decor = get_field('home_blog_title_decoration')) : ?>
                         <?php echo wp_get_attachment_image($title_decor, false, false, array('class' => 'blog-section__title-decor left')); ?>
                     <?php endif; ?>
-                    <h3 class="section__title"><?php echo $title; ?></h3>
+                    <h3 class="blog-section__title"><?php echo $title; ?></h3>
                     <?php if ($title_decor) : ?>
                         <?php echo wp_get_attachment_image($title_decor, false, false, array('class' => 'blog-section__title-decor right')); ?>
                     <?php endif; ?>
@@ -319,7 +393,7 @@ get_header(); ?>
             <?php endif; ?>
             <?php if ($posts = get_field('home_blog_featured_posts')) : ?>
                 <div class="cell">
-                    <div class="post-list grid-x row-gap-90 column-gap-90 large-up-2 medium-up-1 medium-offset-1 medium-10 align-center"
+                    <div class="post-list grid-x row-gap-90 row-gap-25-medium column-gap-90 large-up-2 medium-up-1 medium-offset-1 medium-10 align-center"
                      <?php foreach ($posts as $post) {
                             setup_postdata($post);
                             get_template_part('parts/loop', 'home-post');
@@ -359,7 +433,7 @@ get_header(); ?>
         <div class="contact-form">
             <?php if ($title = get_field('home_contact_title')) : ?>
                 <div class="cell xxxlarge-4 large-6">
-                    <h2 class="section__title text-center"><?php echo $title; ?></h2>
+                    <h2 class="contacts-section__title text-center"><?php echo $title; ?></h2>
                 </div>
             <?php endif; ?>
             <?php if ($gf_id = get_field('home_contact_form')) : ?>
