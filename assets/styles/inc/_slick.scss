@@ -27,11 +27,17 @@ $slick-arrow-size: 2rem;
   }
 }
 .slick-prev {
+  translate: 0 calc(-50% + 50px);
   left: 2rem;
 }
 
 .slick-next {
+  translate: 0 calc(-50% + 50px);
   right: 5rem;
+
+  @include breakpoint(medium down) {
+    right: 3.5rem;
+  }
 }
 
 /* Dots */
@@ -55,21 +61,19 @@ $slick-arrow-size: 2rem;
   .testimonial-slider {
     &__border-img {
       width: 91%;
-      height: 86%;
+      height: 82%;
       position: absolute;
-      top: 50%;
+      top: 56%;
       left: 50%;
       translate: -50% -50%;
       z-index: 0;
     }
 
     &__button {
-      width: rem-calc(170);
-      height: rem-calc(45);
-      padding: 0.75rem;
+      padding: 0.75rem 1.75rem;
 
       position: absolute;
-      bottom: 4%;
+      bottom: 0%;
       left: 50%;
       translate: -50% 0;
 
@@ -80,46 +84,82 @@ $slick-arrow-size: 2rem;
       &:hover {
         background-color: $sub_color;
       }
+
+      @include breakpoint(medium down) {
+        bottom: -3%;
+      }
+
+      @include breakpoint(small down) {
+        font-size: rem-calc(16);
+      }
     }
 
     &__substrate {
       position: absolute;
-      top: -3%;
+      top: 5%;
       left: 50%;
       translate: -50% 0;
-    }
 
-    .home-slide {
-      overflow: hidden;
-      position: relative;
-      margin: auto;
+      @include breakpoint(medium down) {
+        display: none;
+      }
     }
 
     &__avatar {
       height: rem-calc(315);
       width: rem-calc(315);
-      margin-top: -75px;
 
       position: absolute;
       top: 0;
       left: 50%;
       translate: -50% 0;
-
+      z-index: 999;
       border-radius: 50%;
+
+      @include breakpoint(medium down) {
+        height: rem-calc(150);
+        width: rem-calc(150);
+        top: 5%;
+      }
+
+      @include breakpoint(small down) {
+        display: none;
+      }
     }
 
     &__decor {
       height: 10px;
       width: 80px;
       background-color: $primary-color;
+
+      @include breakpoint(medium down) {
+        display: none;
+      }
     }
 
     .home-slide__caption {
-      padding-top: rem-calc(130);
+      padding-top: rem-calc(275);
       padding-inline: rem-calc(275);
+
+      @include breakpoint(xxlarge down) {
+        padding-inline: rem-calc(140);
+      }
+
+      @include breakpoint(medium down) {
+        padding-inline: rem-calc(100);
+        padding-top: rem-calc(120);
+      }
 
       p {
         line-height: 2em;
+
+        @include breakpoint(medium down) {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
       }
     }
   }
