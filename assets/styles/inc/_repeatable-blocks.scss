@@ -120,8 +120,12 @@
   }
 
   .preview__excerpt {
-    margin-top: 15px;
+    margin-top: rem-calc(15);
     color: $dark-gray;
-    line-height: 2.25rem;
+    line-height: 1.25em;
+
+    @include breakpoint(medium down) {
+      margin-top: 0;
+    }
   }
 }
