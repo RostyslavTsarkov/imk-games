@@ -153,22 +153,22 @@ $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
     'h1': (
-      'font-size': 30,
+      'font-size': 40,
     ),
     'h2': (
-      'font-size': 30,
-    ),
-    'h3': (
-      'font-size': 24,
-    ),
-    'h4': (
-      'font-size': 22,
-    ),
-    'h5': (
       'font-size': 20,
     ),
-    'h6': (
+    'h3': (
+      'font-size': 20,
+    ),
+    'h4': (
+      'font-size': 20,
+    ),
+    'h5': (
       'font-size': 18,
+    ),
+    'h6': (
+      'font-size': 16,
     ),
   ),
   medium: (
@@ -290,16 +290,16 @@ $accordion-minus-content: '';
 $accordion-title-font-size: rem-calc(40);
 $accordion-item-color: $primary-color;
 $accordion-item-background-hover: $text-alt-color;
-$accordion-item-padding: 1.75rem 7rem 1.75rem 2rem;
+$accordion-item-padding: 0.7em 3.25em 0.7em 0.8em;
 $accordion-content-background: transparent;
 $accordion-content-border: 5px solid $sub-color;
 $accordion-content-color: $body-font-color;
-$accordion-content-padding: 1.75rem 2rem;
+$accordion-content-padding: 0.7em 0.8em;
 
 // 8. Accordion Menu
 // -----------------
 
-$accordionmenu-padding: $global-menu-padding;
+$accordionmenu-padding: 0.8rem 0rem;
 $accordionmenu-nested-margin: $global-menu-nested-margin;
 $accordionmenu-submenu-padding: $accordionmenu-padding;
 $accordionmenu-arrows: true;
@@ -461,15 +461,15 @@ $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
 $dropdownmenu-arrow-size: 6px;
 $dropdownmenu-arrow-padding: 1.5rem;
-$dropdownmenu-min-width: 200px;
+$dropdownmenu-min-width: 225px;
 $dropdownmenu-background: null;
 $dropdownmenu-submenu-background: $white;
 $dropdownmenu-padding: $global-menu-padding;
 $dropdownmenu-nested-margin: 0;
 $dropdownmenu-submenu-padding: $dropdownmenu-padding;
-$dropdownmenu-border: 1px solid $medium-gray;
-$dropdown-menu-item-color-active: get-color(primary);
-$dropdown-menu-item-background-active: transparent;
+$dropdownmenu-border: none;
+$dropdown-menu-item-color-active: $sub-color;
+$dropdown-menu-item-background-active: $text-alt-color;
 
 // 19. Flexbox Utilities
 // ---------------------
@@ -903,7 +903,7 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  small: 20px,
+  small: 30px,
   medium: 30px,
 );
 $grid-container-padding-gutters: (
