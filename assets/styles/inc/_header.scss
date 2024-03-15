@@ -3,6 +3,14 @@
   //position: absolute;
   //width: 100%;
 
+  nav {
+    display: flex;
+
+    @include breakpoint(small down) {
+      display: block;
+    }
+  }
+
   .sticky.is-stuck {
     background-color: $sticky-header-bg;
     transition: background 0.3s ease;
@@ -14,6 +22,27 @@
 
   a[role='menuitem']:focus {
     color: $primary-color;
+  }
+
+  .top-bar__decor {
+    height: 15px;
+    align-self: center;
+
+    @include breakpoint(xlarge down) {
+      display: none;
+    }
+  }
+
+  .search-toggle {
+    padding: $menu-items-padding;
+
+    @include breakpoint(medium down) {
+      padding: 0.7rem;
+    }
+
+    @include breakpoint(small down) {
+      display: none;
+    }
   }
 }
 
@@ -29,16 +58,30 @@
   img {
     max-height: 40px;
   }
+
+  @include breakpoint(large down) {
+    margin-bottom: rem-calc(10);
+  }
+
+  @include breakpoint(small down) {
+    position: absolute;
+    top: 5px;
+    right: #{-zf-get-bp-val($grid-margin-gutters, 'small') / 2};
+  }
 }
 
 @include breakpoint(small down) {
   /* TOP BAR Mobile STYLING */
 
   .menu-grid-container {
-    padding-left: 0;
-    padding-right: 0;
+    min-height: rem-calc(50);
+    padding-left: rem-calc(15);
+    padding-right: rem-calc(15);
+
+    background-color: $text-alt-color;
 
     .grid-margin-x {
+      min-height: 100%;
       margin-left: 0;
       margin-right: 0;
 
@@ -50,21 +93,29 @@
     }
   }
 
-  //.title-bar {
-  //  line-height: 45px;
-  //
-  //  .menu-icon {
-  //    padding: 0;
-  //    border: none;
-  //    background-color: transparent;
-  //
-  //    //@include menu-icon($white, $white, 30px, 24px, 3px);
-  //  }
-  //}
+  .title-bar {
+    font-size: rem-calc(16);
+    font-weight: 800;
+    line-height: 2.75em;
+
+    .menu-icon {
+      padding: 0;
+      margin-right: rem-calc(10);
+      border: none;
+      background-color: transparent;
+
+      @include menu-icon($white, $white, 32px, 24px, 4px);
+
+      &::after {
+        content: none;
+      }
+    }
+  }
 
   .top-bar {
     display: none;
-    background: $primary-color; /* menu list background color */
+    margin-top: 5px;
+    background: $text-alt-color; /* menu list background color */
   }
 
   .header-menu {
@@ -72,17 +123,18 @@
 
     li {
       > a {
-        background: $primary-color; /* menu item background color */
+        background: $text-alt-color; /* menu item background color */
         color: $white; /* menu item text color */
-        line-height: 45px;
+        text-transform: capitalize;
+        line-height: 1em;
 
         &:focus {
+          color: $sub-color !important;
+          background: transparent !important;
+
           &,
           & + .submenu-toggle {
-            background: darken(
-              $primary-color,
-              5
-            ); /* menu item background color on hover */
+            background: transparent;
           }
         }
       }
@@ -112,16 +164,17 @@
 
     .submenu-toggle {
       padding: 0;
+      background-color: transparent;
     }
 
     .submenu {
       a {
-        padding-left: #{get-side($accordionmenu-padding, 'left') * 1.65};
+        padding-left: 1rem;
       }
 
       .submenu {
         a {
-          padding-left: #{get-side($accordionmenu-padding, 'left') * 2.3};
+          padding-left: 2rem;
         }
       }
     }
@@ -132,17 +185,25 @@
   /* TOP BAR STYLING */
 
   .menu-grid-container {
-    min-height: rem-calc(155); //190px
+    min-height: rem-calc(155);
     font-family: $sub-font;
-    font-size: rem-calc(22);
-    font-weight: 900;
+    font-size: rem-calc(21);
+    font-weight: 800;
 
     @include breakpoint(1750px down) {
       font-size: rem-calc(16);
     }
 
     @include breakpoint(large down) {
-      font-size: rem-calc(22);
+      font-size: rem-calc(20);
+    }
+
+    @include breakpoint(medium down) {
+      font-size: rem-calc(18);
+    }
+
+    @include breakpoint(800px down) {
+      font-size: rem-calc(14);
     }
 
     .sticky.is-stuck & {
@@ -151,7 +212,11 @@
 
     > .grid-x {
       min-height: inherit;
-      padding-top: 50px;
+      padding-top: rem-calc(50);
+
+      @include breakpoint(large down) {
+        padding-top: rem-calc(20);
+      }
 
       .logo {
         margin-top: 25px;
@@ -161,23 +226,22 @@
     .top-bar {
       display: flex;
       justify-content: flex-end;
-
-      &__decor {
-        height: 15px;
-        align-self: center;
-
-        @include breakpoint(xlarge down) {
-          display: none;
-        }
-      }
     }
 
     li {
       > a {
         /* Regular menu item style */
-
-        line-height: 40px;
         color: $primary-color;
+        text-transform: uppercase;
+        line-height: 40px;
+
+        @include breakpoint(large down) {
+          padding-left: 1.5rem !important;
+        }
+
+        @include breakpoint(medium down) {
+          padding-left: 0.75rem !important;
+        }
 
         &:hover {
           /* menu item style on hover */
@@ -199,6 +263,9 @@
       &.has-dropdown {
         > a {
           /* Style of item with dropdown */
+          &:hover {
+            color: $sub-color;
+          }
         }
       }
 
@@ -214,6 +281,7 @@
     .submenu {
       z-index: 11;
       display: none;
+      background-color: transparent !important;
 
       &.js-dropdown-active {
         display: block;
@@ -222,14 +290,13 @@
       li {
         > a {
           /* Regular link in dropdown */
-          background: $white;
+          background-color: $text-alt-color;
           color: $primary-color;
           line-height: 30px;
 
           &:hover {
             /* Dropdown link on hover */
-            background: lighten($primary-color, 10);
-            color: $white;
+            color: $sub-color;
           }
         }
 
