@@ -76,7 +76,7 @@
 
 .home-slide {
   width: 100%;
-  height: 950px; /* define the height of slide */
+  height: 1000px; /* define the height of slide */
   transition: height 0.3s ease;
 
   @include breakpoint(medium down) {
@@ -91,7 +91,7 @@
     @extend %bgcover;
 
     position: relative;
-    height: 100%;
+    height: calc(100% - 50px);
   }
 
   &__caption {
