@@ -41,13 +41,13 @@ add_shortcode('testimonial-slider', function () {
                 setup_postdata($post); ?>
                 <div class="slick-slide home-slide">
                     <?php if ($avatar = get_post_thumbnail_id($post->ID)) : ?>
-                        <?php echo wp_get_attachment_image($avatar, false, false, array('class' => 'testimonial-slider__avatar')); ?>
+                        <?php echo wp_get_attachment_image($avatar, 'medium', false, array('class' => 'testimonial-slider__avatar')); ?>
                     <?php endif; ?>
                     <div class="home-slide__inner">
                         <div class="grid-container home-slide__caption">
                             <div class="grid-x grid-margin-x">
                                 <div class="cell text-center">
-                                    <div class="grid-y row-gap-60 align-justify align-middle">
+                                    <div class="grid-y row-gap-60 row-gap-25-medium align-justify align-middle">
                                         <h3>
                                             <?php echo get_the_title($post->ID); ?>
                                         </h3>
