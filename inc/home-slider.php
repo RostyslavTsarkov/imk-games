@@ -263,10 +263,10 @@ add_shortcode('slider', function () {
                             <div class="grid-x grid-margin-x">
                                 <div class="cell">
                                     <div class="grid-y grid-margin-y">
-                                        <div class="cell large-7 medium-10">
+                                        <div class="cell xlarge-7 large-9 medium-8">
                                             <h1><?php the_title(); ?></h1>
                                         </div>
-                                        <div class="cell large-3 medium-6">
+                                        <div class="cell xlarge-3 large-5 medium-4">
                                             <?php the_content(); ?>
                                         </div>
                                     </div>
