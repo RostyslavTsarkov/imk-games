@@ -77,13 +77,32 @@ main {
 
 [data-toggle-block] {
   display: none;
+
+  @include breakpoint(small down) {
+    display: block;
+    margin-block: 10px;
+  }
 }
 
 [data-toggle-block].active {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   position: absolute;
+  bottom: -50%;
   right: 0;
+  translate: 0 -50%;
+
+  @include breakpoint(large down) {
+    margin-bottom: -50px;
+  }
+}
+
+.sticky.is-stuck .search-container {
+  padding: 0 2rem 1.5rem 2rem;
+  margin-right: -2rem;
+  margin-bottom: -24px;
+  background-color: $text-alt-color;
+  border-radius: 0 0 20px 20px;
 }
 
 .search-container .search {
@@ -91,6 +110,11 @@ main {
 
   .header & {
     width: 300px;
+
+    @include breakpoint(small down) {
+      position: relative;
+      width: 100%;
+    }
   }
 
   .posts-list & {
@@ -227,6 +251,11 @@ img {
   background-position: 50% 50%;
   background-size: cover;
   transition: 0.2s ease;
+
+  @include breakpoint(medium down) {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 %search-glass {
@@ -270,6 +299,10 @@ img {
 
 .row-gap-60 {
   row-gap: rem-calc(60);
+}
+
+.row-gap-30 {
+  row-gap: rem-calc(30);
 }
 
 .row-gap-25-medium {
