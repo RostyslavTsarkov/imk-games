@@ -25,7 +25,7 @@ get_header(); ?>
 
         <main class="main-content">
             <div class="grid-container">
-                <div class="grid-x grid-margin-x">
+                <div class="grid-x grid-margin-x row-gap-60">
                     <!-- BEGIN of post content -->
                     <div class="large-8 cell">
                         <article id="post-<?php the_ID(); ?>" <?php post_class('entry'); ?>>
@@ -40,7 +40,9 @@ get_header(); ?>
                             <div class="entry__content clearfix">
                                 <?php the_content('', true); ?>
                             </div>
-                            <h6 class="entry__cat"><?php _e('Posted Under: ', 'fxy'); ?><?php the_category(', '); ?></h6>
+                            <?php if (!is_singular('testimonial')) : ?>
+                                <h6 class="entry__cat"><?php _e('Posted Under: ', 'fxy'); ?><?php the_category(', '); ?></h6>
+                            <?php endif; ?>
                         </article>
                     </div>
                     <!-- END of post content -->
