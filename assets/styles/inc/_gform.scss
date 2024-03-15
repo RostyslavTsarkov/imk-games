@@ -152,8 +152,6 @@ $fields-gap: map_get($grid-column-gutter, 'medium');
     }
 
     .gfield.gfield--type-address {
-      //display: inline-block !important;
-
       .ginput_container {
         margin-inline: auto;
 
