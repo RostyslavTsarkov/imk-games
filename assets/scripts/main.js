@@ -290,7 +290,7 @@ $(window).scroll(function () {
 });
 
 /**
- * Scripts for pause video, show and hide a custom play button for a video
+ * Scripts for showing and hiding a custom play button for the home video
  */
 $('#video-play').click(function () {
   $('#player')[0].play();
@@ -301,15 +301,15 @@ $('#player').on('ended', function () {
 });
 
 /**
- * Scripts for remove classes from Gravity Forms inputs
+ * Remove classes of Gravity Forms inputs
  */
 $('.contacts-section *').removeClass('ginput_complex');
 $('.contacts-section *').removeClass('gfield--width-half');
 
 /**
- * Scripts for change classes
+ * Change classes of address type inputs based on country selection
  */
-$(document).ready(function () {
+$(window).ready(function () {
   $('.gfield.gfield--type-address:has(.has_country)').change(function () {
     if (
       $('.gfield.gfield--type-address:has(.has_country) select').val() ===
@@ -331,4 +331,18 @@ $(document).ready(function () {
         .addClass('gfield--full-width');
     }
   });
+});
+
+/**
+ * Change text of the dropdown
+ */
+$(window).ready(function () {
+  var dropdown = $('.tabs-dropdown span');
+  var activeTab = $('#small-tabs ul li.is-active a');
+  dropdown.text(activeTab.text());
+});
+
+$('.tabs-title-link').click(function () {
+  var dropdown = $('.tabs-dropdown span');
+  dropdown.text(this.text);
 });
