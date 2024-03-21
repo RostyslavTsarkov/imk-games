@@ -1,4 +1,5 @@
 .home__featured-img {
+  position: absolute;
   top: 0;
   right: 0;
   object-fit: contain;
@@ -6,16 +7,10 @@
   z-index: -1;
 
   @include breakpoint(xlarge down) {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: 25% 0%;
-  }
-
-  @include breakpoint(large down) {
-    margin-top: rem-calc(100);
-  }
-
-  @include breakpoint(small down) {
-    margin-top: rem-calc(-75);
   }
 }
 
@@ -30,6 +25,9 @@
 }
 
 .tabs-section {
+  margin-top: -20px;
+  z-index: 10;
+
   .tabs-dropdown {
     width: 100%;
     padding: rem-calc(15);
@@ -493,7 +491,16 @@
   }
 
   .post-list {
+    margin-inline: rem-calc(50);
     margin-top: rem-calc(150);
+
+    @include breakpoint(1750px down) {
+      column-gap: rem-calc(60);
+    }
+
+    @include breakpoint(xlarge down) {
+      column-gap: rem-calc(30);
+    }
 
     @include breakpoint(medium down) {
       margin-top: rem-calc(75);
