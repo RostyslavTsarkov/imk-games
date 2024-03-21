@@ -84,6 +84,10 @@
   }
 
   p {
-    margin-bottom: 2em;
+    margin-bottom: 3.5rem;
+
+    @include breakpoint(medium down) {
+      margin-bottom: 1rem;
+    }
   }
 }
