@@ -46,7 +46,8 @@
                     </div>
                 </div>
                 <div class="xlarge-10 large-12 cell rel-content small-order-1 medium-order-2" data-smooth-scroll>
-                    <?php if (has_nav_menu('header-menu')) : ?>
+                    <?php $menu_location = is_front_page() ? 'header-menu' : 'header-menu-home'; ?>
+                    <?php if (has_nav_menu($menu_location)) : ?>
                         <div class="title-bar hide-for-medium" data-responsive-toggle="main-menu" data-hide-for="medium">
                             <button class="menu-icon" type="button" data-toggle aria-label="Menu" aria-controls="main-menu">
                                 <span></span></button>
@@ -57,7 +58,7 @@
                                 <?php echo wp_get_attachment_image($decor, false, false, array('class' => 'top-bar__decor')); ?>
                             <?php endif; ?>
                             <?php wp_nav_menu(array(
-                                'theme_location' => 'header-menu',
+                                'theme_location' => $menu_location,
                                 'menu_class' => 'menu header-menu',
                                 'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" data-submenu-toggle="true" data-multi-open="false" data-close-on-click-inside="false">%3$s</ul>',
                                 'walker' => new theme\FoundationNavigation()
