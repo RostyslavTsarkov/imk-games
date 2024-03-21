@@ -15,13 +15,15 @@
                 </a>
             </h5>
         </div>
-        <?php if (has_post_thumbnail()) : ?>
-            <div class="cell">
-                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                    <?php the_post_thumbnail('medium', array('class' => 'preview__thumb')); ?>
-                </a>
-            </div>
-        <?php endif; ?>
+        <div class="cell">
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                <?php if (has_post_thumbnail()) : ?>
+                    <?php  the_post_thumbnail('medium', array('class' => 'preview__thumb')); ?>
+                <?php else : ?>
+                    <img class='preview__thumb' src="<?php echo IMAGE_PLACEHOLDER; ?>"/>
+                <?php endif; ?>
+            </a>
+        </div>
         <div class="cell">
             <p class="preview__excerpt">
                 <?php echo wp_trim_words(get_the_excerpt(), 20);?>
