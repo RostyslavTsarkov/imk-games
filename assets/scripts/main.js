@@ -290,14 +290,19 @@ $(window).scroll(function () {
 });
 
 /**
- * Scripts for showing and hiding a custom play button for the home video
+ * Scripts for control elements while the home page video paused or playing
  */
 $('#video-play').click(function () {
-  $('#player')[0].play();
+  $('#player').get(0).play();
+  $('#player').css('z-index', '100').attr('controls', true);
   $('#video-play').hide();
+  console.log('Button clicked!');
 });
-$('#player').on('ended', function () {
+
+$('#player').on('pause', function () {
+  $('#player').css('z-index', '0').removeAttr('controls');
   $('#video-play').show();
+  console.log('Paused!');
 });
 
 /**
