@@ -225,61 +225,60 @@ add_shortcode('slider', function () {
         'order' => 'ASC',
         'orderby' => 'menu_order',
         'posts_per_page' => -1
-    ]);
-    if ($slider->have_posts()) : ?>
-        <div id="home-slider" class="slick-slider home-slider">
-            <?php while ($slider->have_posts()) :
-                $slider->the_post(); ?>
-                <div class="slick-slide home-slide">
-                    <div class="home-slide__inner" <?php // bg(get_attached_img_url(get_the_ID(), 'full_hd')); ?>>
-                        <?php $bg_video_url = get_post_meta(get_the_ID(), 'slide_video_bg', true); ?>
-                        <?php if (get_post_format() == 'video' && $bg_video_url) : ?>
-                            <div class="videoHolder show-for-large"
-                                 data-ratio="<?php echo get_post_meta(get_the_ID(), 'video_aspect_ratio', true) ?: '16:9'; ?>">
-                                <?php
-                                $allowed_video_format = [
-                                    'webm' => 'video/webm',
-                                    'mp4' => 'video/mp4',
-                                    'ogv' => 'video/ogg',
-                                    'mkv' => 'video/mkv',
-                                ]; ?>
-                                <?php $file_info = wp_check_filetype($bg_video_url, $allowed_video_format); ?>
-                                <?php if ($file_info['ext']) : ?>
-                                    <video src="<?php echo $bg_video_url; ?>"
-                                           autoplay
-                                           preload="none"
-                                           muted="muted"
-                                           loop="loop"
-                                           class="video video--local"></video>
-                                <?php elseif (is_embed_video($bg_video_url)) : ?>
-                                    <div class="video video--embed responsive-embed widescreen">
-                                        <?php echo wp_oembed_get($bg_video_url, ['location' => 'home_slider', 'id' => 'slide-' . get_the_ID()]); ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
+    ]); ?>
+    <div id="home-slider" class="slick-slider home-slider">
+        <?php while ($slider->have_posts()) :
+            $slider->the_post(); ?>
+            <div class="slick-slide home-slide">
+                <div class="home-slide__inner" <?php //bg(get_attached_img_url(get_the_ID(), 'full_hd')); ?>>
+                    <img class="home__featured-img" src="<?php echo get_attached_img_url(get_the_ID(), 'full_hd') ?>">
+                    <?php $bg_video_url = get_post_meta(get_the_ID(), 'slide_video_bg', true); ?>
+                    <?php if (get_post_format() == 'video' && $bg_video_url) : ?>
+                        <div class="videoHolder show-for-large"
+                             data-ratio="<?php echo get_post_meta(get_the_ID(), 'video_aspect_ratio', true) ?: '16:9'; ?>">
+                            <?php
+                            $allowed_video_format = [
+                                'webm' => 'video/webm',
+                                'mp4' => 'video/mp4',
+                                'ogv' => 'video/ogg',
+                                'mkv' => 'video/mkv',
+                            ]; ?>
+                            <?php $file_info = wp_check_filetype($bg_video_url, $allowed_video_format); ?>
+                            <?php if ($file_info['ext']) : ?>
+                                <video src="<?php echo $bg_video_url; ?>"
+                                       autoplay
+                                       preload="none"
+                                       muted="muted"
+                                       loop="loop"
+                                       class="video video--local"></video>
+                            <?php elseif (is_embed_video($bg_video_url)) : ?>
+                                <div class="video video--embed responsive-embed widescreen">
+                                    <?php echo wp_oembed_get($bg_video_url, ['location' => 'home_slider', 'id' => 'slide-' . get_the_ID()]); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
-                        <div class="grid-container home-slide__caption">
-                            <div class="grid-x grid-margin-x">
-                                <div class="cell">
-                                    <div class="grid-y grid-margin-y">
-                                        <div class="cell xlarge-7 large-9 medium-8">
-                                            <h1><?php the_title(); ?></h1>
-                                        </div>
-                                        <div class="cell xlarge-3 large-5 medium-4">
-                                            <?php the_content(); ?>
-                                        </div>
+                    <div class="grid-container home-slide__caption">
+                        <div class="grid-x grid-margin-x">
+                            <div class="cell">
+                                <div class="grid-y grid-margin-y">
+                                    <div class="cell xlarge-7 large-9 medium-8">
+                                        <h1><?php the_title(); ?></h1>
+                                    </div>
+                                    <div class="cell xlarge-3 large-5 medium-4">
+                                        <?php the_content(); ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            <?php endwhile; ?>
-        </div><!-- END of  #home-slider-->
-    <?php endif;
-    wp_reset_query();
+
+            </div>
+        <?php endwhile; ?>
+    </div><!-- END of  #home-slider-->
+    <?php wp_reset_query();
 
     return ob_get_clean();
 });
