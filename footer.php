@@ -63,9 +63,11 @@
                 <div class="grid-y row-gap-60 row-gap-25-medium">
                     <?php if (get_field('socials', 'options')) : ?>
                     <div class="cell">
-                        <h6 class="footer__title">
-                            <?php _e('JOIN OUR COMMUNITY'); ?>
-                        </h6>
+                        <?php if ($socials_title = get_field('footer_socials_title', 'options')) : ?>
+                            <h6 class="footer__title">
+                                <?php echo $socials_title; ?>
+                            </h6>
+                        <?php endif; ?>
                     </div>
                     <div class="cell large-8">
                         <?php get_template_part('parts/socials');?>
